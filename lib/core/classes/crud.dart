@@ -13,12 +13,14 @@ class Crud {
           var data = jsonDecode(response.body);
           return right(data);
         } else {
+          print("KKK");
           return left(Status.serverFailure);
         }
       } else {
         return left(Status.internetFailure);
       }
     } catch (e) {
+      print("error :$e");
       return left(Status.serverFailure);
     }
   }

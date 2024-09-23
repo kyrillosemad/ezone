@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 import 'package:ezone/controller/auth/login.dart';
+import 'package:ezone/core/classes/status.dart';
 import 'package:ezone/core/constants/colors.dart';
 import 'package:ezone/core/functions/app_exit_alert.dart';
 import 'package:ezone/core/functions/validator.dart';
@@ -71,11 +72,19 @@ class Login extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              CustomButtonAuth(
-                  text: "Sign In",
-                  onPressed: () {
-                    controller.login();
-                  }),
+              Obx(() {
+                return controller.reqStatus.value == Status.loading
+                    ? const Center(
+                        child: CircularProgressIndicator(
+                        backgroundColor: AppColor.primaryColor,
+                        color: Colors.white,
+                      ))
+                    : CustomButtonAuth(
+                        text: "Sign In",
+                        onPressed: () {
+                          controller.login(context);
+                        });
+              }),
               const SizedBox(height: 40),
               CustomTextSignUpOrSignIn(
                 textOne: "Don't have an account ? ",

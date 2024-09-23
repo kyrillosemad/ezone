@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 import 'package:ezone/controller/auth/forget_password.dart';
+import 'package:ezone/core/classes/status.dart';
 import 'package:ezone/core/constants/colors.dart';
 import 'package:ezone/core/constants/text_styles.dart';
 import 'package:ezone/core/functions/validator.dart';
@@ -48,11 +49,19 @@ class ForgetPassword extends StatelessWidget {
               obscure: false,
               isNumber: false,
             ),
-            CustomButtonAuth(
-                text: "Check",
-                onPressed: () {
-                  controller.goToPassVerifyCode();
-                }),
+            Obx(() {
+              return controller.reqStatus.value == Status.loading
+                  ? const Center(
+                      child: CircularProgressIndicator(
+                      backgroundColor: AppColor.primaryColor,
+                      color: Colors.white,
+                    ))
+                  : CustomButtonAuth(
+                      text: "Check",
+                      onPressed: () {
+                        controller.goToPassVerifyCode(context);
+                      });
+            }),
             const SizedBox(height: 40),
           ]),
         ),

@@ -1,7 +1,7 @@
 class AppLink {
-  static const String server = "http://192.168.1.7/ezone";
+  static const String server = "http://192.168.1.10/ezone";
 
-  static const String imagesStatic = "http://192.168.1.7/ezone/upload";
+  static const String imagesStatic = "http://192.168.1.10/ezone/upload";
 //========================== Image ============================
   static const String imagesCategories = "$imagesStatic/categories";
   static const String imagesItems = "$imagesStatic/items";
@@ -23,7 +23,7 @@ class AppLink {
   static const String checkEmail = "$server/forgetpassword/checkemail.php";
   static const String resetPassword =
       "$server/forgetpassword/resetpassword.php";
-  static const String verifyCodeForgetpassword =
+  static const String verifyCodeForgetPassword =
       "$server/forgetpassword/verifycode.php";
 
 // Home
@@ -45,7 +45,7 @@ class AppLink {
   static const String cartView = "$server/cart/view.php";
   static const String cartAdd = "$server/cart/add.php";
   static const String cartDelete = "$server/cart/delete.php";
-  static const String cartGetcountitems = "$server/cart/getcountitems.php";
+  static const String cartGetCountItems = "$server/cart/getcountitems.php";
 
   // Address
 
@@ -56,7 +56,7 @@ class AppLink {
 
   // Coupon
 
-  static const String checkcoupon = "$server/coupon/checkcoupon.php";
+  static const String checkCoupon = "$server/coupon/checkcoupon.php";
 
   // Checkout
 

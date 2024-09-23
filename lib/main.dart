@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final Services services = Get.put(Services());
     String? lang = services.sharedPref?.getString("lang");
-
+    String? userId = services.sharedPref?.getString("userId");
     return Sizer(
       builder: (context, orientation, deviceType) {
         return GetMaterialApp(

@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 import 'package:ezone/controller/auth/reset_password.dart';
+import 'package:ezone/core/classes/status.dart';
 import 'package:ezone/core/constants/colors.dart';
 import 'package:ezone/core/constants/text_styles.dart';
 import 'package:ezone/core/functions/validator.dart';
@@ -67,11 +68,19 @@ class ResetPassword extends StatelessWidget {
                   },
                   isNumber: false,
                 )),
-            CustomButtonAuth(
-                text: "save",
-                onPressed: () async {
-                  await controller.resetPassword(context);
-                }),
+            Obx(() {
+              return controller.reqStatus.value == Status.loading
+                  ? const Center(
+                      child: CircularProgressIndicator(
+                      backgroundColor: AppColor.primaryColor,
+                      color: Colors.white,
+                    ))
+                  : CustomButtonAuth(
+                      text: "save",
+                      onPressed: () async {
+                        await controller.resetPassword(context);
+                      });
+            }),
             const SizedBox(height: 40),
           ]),
         ),
