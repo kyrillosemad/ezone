@@ -2,7 +2,7 @@ import 'package:ezone/core/constants/routes.dart';
 import 'package:ezone/core/constants/theme.dart';
 import 'package:ezone/core/localization/translation.dart';
 import 'package:ezone/core/services/services.dart';
-import 'package:ezone/view/view_modules/home_page/screens/home_page.dart';
+import 'package:ezone/view/view_modules/home_page/screens/bottom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           // home: lang != null ? Login() : Language(),
-          home: const HomePage(),
+          home: const BottomNav(),
           routes: routes,
           theme: lang == null || lang == "EN" ? englishTheme : arabicTheme,
           translations: MyTranslation(),

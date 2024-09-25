@@ -1,4 +1,4 @@
-import 'package:ezone/controller/on_boarding_cont.dart';
+import 'package:ezone/controller/on_boarding/on_boarding_cont.dart';
 import 'package:ezone/view/view_modules/on_boarding/widgets/custom_button.dart';
 import 'package:ezone/view/view_modules/on_boarding/widgets/page_indicator.dart';
 import 'package:ezone/view/view_modules/on_boarding/widgets/page_view.dart';

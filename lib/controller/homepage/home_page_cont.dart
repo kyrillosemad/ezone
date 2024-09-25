@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
+import 'package:ezone/controller/items/items_cont.dart';
 import 'package:ezone/core/classes/status.dart';
 import 'package:ezone/core/constants/api_links.dart';
+import 'package:ezone/core/constants/routes_name.dart';
 import 'package:ezone/core/services/services.dart';
 import 'package:ezone/data/remote/homepage.dart/homepage_data_req.dart';
 import 'package:get/get.dart';
@@ -31,6 +33,15 @@ class HomePageCont extends GetxController {
       reqStatus.value = Status.success;
       items.addAll(r['items']['data']);
       categories.addAll(r['categories']['data']);
+    });
+    update();
+  }
+
+  goToItemsPage(int selectedCat, List categories) {
+    Get.delete<ItemsCont>();
+    Get.toNamed(AppRoutes().items, arguments: {
+      "categories": categories,
+      "selectedCat": selectedCat,
     });
   }
 }

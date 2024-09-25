@@ -1,7 +1,8 @@
 enum Status {
   initial,
-  success,
   loading,
+  success,
+  empty,
   internetFailure,
   serverFailure,
 }

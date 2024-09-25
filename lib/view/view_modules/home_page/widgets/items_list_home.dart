@@ -1,4 +1,3 @@
-
 import 'package:ezone/controller/homepage/home_page_cont.dart';
 import 'package:ezone/core/constants/api_links.dart';
 import 'package:ezone/core/constants/colors.dart';
@@ -14,6 +13,7 @@ class ListItemsHome extends GetView<HomePageCont> {
     return SizedBox(
       height: 140,
       child: ListView.builder(
+          physics: const BouncingScrollPhysics(),
           itemCount: controller.items.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, i) {
@@ -53,10 +53,7 @@ class ItemsHome extends StatelessWidget {
             left: 10,
             child: Text(
               "${itemsModel.itemsName}",
-              style: const TextStyle(
-                  color: Colors.white,
-                  // fontWeight: FontWeight.bold,
-                  fontSize: 14),
+              style: const TextStyle(color: Colors.white, fontSize: 14),
             ))
       ],
     );

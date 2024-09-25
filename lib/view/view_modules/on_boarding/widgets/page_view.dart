@@ -1,4 +1,4 @@
-import 'package:ezone/controller/on_boarding_cont.dart';
+import 'package:ezone/controller/on_boarding/on_boarding_cont.dart';
 import 'package:ezone/core/constants/text_styles.dart';
 import 'package:ezone/data/static/on_boarding_data.dart';
 import 'package:flutter/material.dart';

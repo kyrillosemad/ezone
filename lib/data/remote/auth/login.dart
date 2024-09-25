@@ -1,6 +1,6 @@
-import 'package:ezone/core/classes/crud.dart';
+import 'package:ezone/core/classes/request.dart';
 
 loginReq(String link, Map data) async {
-  var res = Crud().crud(link, data);
+  var res = Request().request(link, data);
   return res;
 }

@@ -1,151 +1,54 @@
-// // ignore_for_file: file_names
-// import 'package:bookito/services/auth/logout_fun.dart';
-// import 'package:bookito/view/constants/colors.dart';
-// import 'package:bookito/view/modules_view/main%20pages/screens/add%20book.dart';
-// import 'package:bookito/view/modules_view/main%20pages/screens/favorite.dart';
-// import 'package:bookito/view/modules_view/main%20pages/screens/homepage.dart';
-// import 'package:bookito/view/modules_view/main%20pages/screens/mybooks.dart';
-// import 'package:ezone/view/view_modules/home_page/screens/home_page.dart';
-// import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
-// import 'package:sizer/sizer.dart';
-// import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
+import 'package:ezone/controller/homepage/bottom_app_bar_cont.dart';
+import 'package:ezone/core/constants/colors.dart';
+import 'package:ezone/core/functions/app_exit_alert.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
-// class BottomNav extends StatefulWidget {
-//   const BottomNav({super.key});
+class BottomNav extends StatefulWidget {
+  const BottomNav({super.key});
 
-//   @override
-//   State<BottomNav> createState() => _BottomNavState();
-// }
+  @override
+  State<BottomNav> createState() => _BottomNavState();
+}
 
-// class _BottomNavState extends State<BottomNav> {
-//   int curInd = 2;
-//   List<Widget> body = const [
-//    HomePage(),
-
-//   ];
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SafeArea(
-//       child: Scaffold(
-//         backgroundColor: Colors.white,
-//         bottomNavigationBar: MoltenBottomNavigationBar(
-//           domeCircleColor: MyColors().maincolor,
-//           domeCircleSize: 26.sp,
-//           borderSize: 1.sp,
-//           borderColor: MyColors().maincolor,
-//           borderRaduis: const BorderRadius.all(Radius.zero),
-//           barColor: Colors.white,
-//           selectedIndex: curInd,
-//           onTabChange: (clickedIndex) {
-//             setState(() {
-//               if (clickedIndex == 4) {
-//                 Get.defaultDialog(
-//                   title: "logout!",
-//                   titleStyle: TextStyle(color: MyColors().maincolor),
-//                   cancelTextColor: MyColors().maincolor,
-//                   buttonColor: MyColors().maincolor,
-//                   content: Text(
-//                     "are you sure to logout",
-//                     style: TextStyle(color: MyColors().maincolor),
-//                   ),
-//                   confirmTextColor: Colors.white,
-//                   onCancel: () {},
-//                   onConfirm: () {
-//                     setState(() {
-//                       logoutFun();
-//                     });
-//                   },
-//                 );
-//               } else {
-//                 setState(() {
-//                   curInd = clickedIndex;
-//                 });
-//               }
-//             });
-//           },
-//           barHeight: 8.h,
-//           tabs: [
-//             MoltenTab(
-//               unselectedColor: MyColors().maincolor,
-//               selectedColor: Colors.white,
-//               icon: Icon(
-//                 Icons.favorite,
-//                 size: 19.sp,
-//               ),
-//               title: Text(
-//                 "Favorite",
-//                 style: TextStyle(
-//                   color: MyColors().maincolor,
-//                   fontSize: 11.sp,
-//                 ),
-//               ),
-//             ),
-//             MoltenTab(
-//               unselectedColor: MyColors().maincolor,
-//               selectedColor: Colors.white,
-//               icon: Icon(
-//                 Icons.add,
-//                 size: 19.sp,
-//               ),
-//               title: Text(
-//                 "New book",
-//                 style: TextStyle(
-//                   color: MyColors().maincolor,
-//                   fontSize: 11.sp,
-//                 ),
-//               ),
-//             ),
-//             MoltenTab(
-//               unselectedColor: MyColors().maincolor,
-//               selectedColor: Colors.white,
-//               icon: Icon(
-//                 Icons.home,
-//                 size: 19.sp,
-//               ),
-//               title: Text(
-//                 "Home",
-//                 style: TextStyle(
-//                   color: MyColors().maincolor,
-//                   fontSize: 11.sp,
-//                 ),
-//               ),
-//             ),
-//             MoltenTab(
-//               unselectedColor: MyColors().maincolor,
-//               selectedColor: Colors.white,
-//               icon: Icon(
-//                 Icons.my_library_books,
-//                 size: 18.sp,
-//               ),
-//               title: Text(
-//                 "My books",
-//                 style: TextStyle(
-//                   color: MyColors().maincolor,
-//                   fontSize: 11.sp,
-//                 ),
-//               ),
-//             ),
-//             MoltenTab(
-//               unselectedColor: MyColors().maincolor,
-//               selectedColor: Colors.white,
-//               icon: Icon(
-//                 Icons.logout,
-//                 size: 19.sp,
-//               ),
-//               title: Text(
-//                 "Log out",
-//                 style: TextStyle(
-//                   color: MyColors().maincolor,
-//                   fontSize: 11.sp,
-//                 ),
-//               ),
-//             ),
-//           ],
-//         ),
-//         body: body[curInd],
-//       ),
-//     );
-//   }
-// }
+class _BottomNavState extends State<BottomNav> {
+  BottomNavCont controller = Get.put(BottomNavCont());
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop: appExitAlert,
+      child: PersistentTabView(
+        context,
+        controller: controller.controller,
+        screens: controller.buildScreens(),
+        items: controller.navBarsItems(),
+        confineInSafeArea: true,
+        backgroundColor: Colors.white,
+        handleAndroidBackButtonPress: true,
+        resizeToAvoidBottomInset: true,
+        stateManagement: true,
+        hideNavigationBarWhenKeyboardShows: true,
+        decoration: NavBarDecoration(
+          colorBehindNavBar: Colors.white,
+          border: Border.all(
+            color: AppColor.primaryColor,
+            width: 1,
+          ),
+        ),
+        popAllScreensOnTapOfSelectedTab: true,
+        popActionScreens: PopActionScreensType.all,
+        itemAnimationProperties: const ItemAnimationProperties(
+          duration: Duration(milliseconds: 200),
+          curve: Curves.ease,
+        ),
+        screenTransitionAnimation: const ScreenTransitionAnimation(
+          animateTabTransition: true,
+          curve: Curves.ease,
+          duration: Duration(milliseconds: 200),
+        ),
+        navBarStyle: NavBarStyle.style13,
+      ),
+    );
+  }
+}
