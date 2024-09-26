@@ -2,7 +2,6 @@ import 'package:ezone/view/view_modules/item_details/widgets/item_price_and_coun
 import 'package:ezone/view/view_modules/item_details/widgets/sub_item_list.dart';
 import 'package:ezone/view/view_modules/item_details/widgets/top_Item_details_page.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../core/constants/colors.dart';
 
 class ItemDetails extends StatelessWidget {

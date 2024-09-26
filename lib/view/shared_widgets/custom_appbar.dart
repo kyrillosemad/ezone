@@ -3,12 +3,14 @@ import 'package:sizer/sizer.dart';
 
 class CustomAppBar extends StatelessWidget {
   final String titleAppBar;
+  final IconData icon;
   final void Function()? onPressedIcon;
   final void Function()? onPressedSearch;
 
   const CustomAppBar(
       {Key? key,
       required this.titleAppBar,
+      required this.icon,
       this.onPressedIcon,
       this.onPressedSearch})
       : super(key: key);
@@ -50,7 +52,7 @@ class CustomAppBar extends StatelessWidget {
             child: IconButton(
               onPressed: onPressedIcon,
               icon: Icon(
-                Icons.notifications_active_outlined,
+                icon ,
                 size: 30,
                 color: Colors.grey[600],
               ),

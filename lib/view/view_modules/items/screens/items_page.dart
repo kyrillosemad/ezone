@@ -1,7 +1,8 @@
 import 'package:ezone/controller/items/items_cont.dart';
 import 'package:ezone/core/classes/handling_data_view.dart';
+import 'package:ezone/core/constants/routes_name.dart';
 import 'package:ezone/model/items/items_model.dart';
-import 'package:ezone/view/view_modules/home_page/widgets/custom_appbar.dart';
+import 'package:ezone/view/shared_widgets/custom_appbar.dart';
 import 'package:ezone/view/view_modules/items/widgets/custom_list_categories_in_items.dart';
 import 'package:ezone/view/view_modules/items/widgets/custom_list_items.dart';
 import 'package:flutter/material.dart';
@@ -23,8 +24,11 @@ class ItemsPage extends StatelessWidget {
           children: [
             SizedBox(height: 2.h),
             CustomAppBar(
+              icon: Icons.favorite,
               titleAppBar: "Find Product",
-              onPressedIcon: () {},
+              onPressedIcon: () {
+                Get.toNamed(AppRoutes().favorite);
+              },
               onPressedSearch: () {},
             ),
             const SizedBox(height: 10),
@@ -46,6 +50,7 @@ class ItemsPage extends StatelessWidget {
                         ItemsModel itemsModel =
                             ItemsModel.fromJson(controller.items[index]);
                         return CustomListItems(
+                          index: index,
                           itemsModel: itemsModel,
                           controller: controller,
                         );

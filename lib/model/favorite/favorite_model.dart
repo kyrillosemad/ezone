@@ -1,4 +1,7 @@
-class ItemsModel {
+class FavoriteModel {
+  int? favoriteId;
+  int? favoriteUsersid;
+  int? favoriteItemsid;
   int? itemsId;
   String? itemsName;
   String? itemsNameAr;
@@ -11,15 +14,13 @@ class ItemsModel {
   String? itemsImage;
   int? itemsCat;
   String? itemsDate;
-  int? categoriesId;
-  String? categoriesName;
-  String? categoriesNamaAr;
-  String? categoriesImage;
-  String? categoriesDatetime;
-  int? favorite;
+  int? userId;
 
-  ItemsModel(
-      {this.itemsId,
+  FavoriteModel(
+      {this.favoriteId,
+      this.favoriteUsersid,
+      this.favoriteItemsid,
+      this.itemsId,
       this.itemsName,
       this.itemsNameAr,
       this.itemsDesc,
@@ -31,14 +32,12 @@ class ItemsModel {
       this.itemsImage,
       this.itemsCat,
       this.itemsDate,
-      this.categoriesId,
-      this.categoriesName,
-      this.categoriesNamaAr,
-      this.categoriesImage,
-      this.favorite,
-      this.categoriesDatetime});
+      this.userId});
 
-  ItemsModel.fromJson(Map<String, dynamic> json) {
+  FavoriteModel.fromJson(Map<String, dynamic> json) {
+    favoriteId = json['favorite_id'];
+    favoriteUsersid = json['favorite_usersid'];
+    favoriteItemsid = json['favorite_itemsid'];
     itemsId = json['items_id'];
     itemsName = json['items_name'];
     itemsNameAr = json['items_name_ar'];
@@ -51,16 +50,14 @@ class ItemsModel {
     itemsImage = json['items_image'];
     itemsCat = json['items_cat'];
     itemsDate = json['items_date'];
-    categoriesId = json['categories_id'];
-    categoriesName = json['categories_name'];
-    categoriesNamaAr = json['categories_nama_ar'];
-    categoriesImage = json['categories_image'];
-    categoriesDatetime = json['categories_datetime'];
-    favorite = json['favorite'];
+    userId = json['user_id'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
+    data['favorite_id'] = favoriteId;
+    data['favorite_usersid'] = favoriteUsersid;
+    data['favorite_itemsid'] = favoriteItemsid;
     data['items_id'] = itemsId;
     data['items_name'] = itemsName;
     data['items_name_ar'] = itemsNameAr;
@@ -73,11 +70,7 @@ class ItemsModel {
     data['items_image'] = itemsImage;
     data['items_cat'] = itemsCat;
     data['items_date'] = itemsDate;
-    data['categories_id'] = categoriesId;
-    data['categories_name'] = categoriesName;
-    data['categories_nama_ar'] = categoriesNamaAr;
-    data['categories_image'] = categoriesImage;
-    data['categories_datetime'] = categoriesDatetime;
+    data['user_id'] = userId;
     return data;
   }
 }

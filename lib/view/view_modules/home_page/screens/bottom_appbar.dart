@@ -14,40 +14,43 @@ class BottomNav extends StatefulWidget {
 
 class _BottomNavState extends State<BottomNav> {
   BottomNavCont controller = Get.put(BottomNavCont());
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: appExitAlert,
-      child: PersistentTabView(
-        context,
-        controller: controller.controller,
-        screens: controller.buildScreens(),
-        items: controller.navBarsItems(),
-        confineInSafeArea: true,
-        backgroundColor: Colors.white,
-        handleAndroidBackButtonPress: true,
-        resizeToAvoidBottomInset: true,
-        stateManagement: true,
-        hideNavigationBarWhenKeyboardShows: true,
-        decoration: NavBarDecoration(
-          colorBehindNavBar: Colors.white,
-          border: Border.all(
-            color: AppColor.primaryColor,
-            width: 1,
+      child: Scaffold(
+        body: PersistentTabView(
+          context,
+          controller: controller.controller,
+          screens: controller.buildScreens(),
+          items: controller.navBarsItems(),
+          confineInSafeArea: true,
+          backgroundColor: Colors.white,
+          handleAndroidBackButtonPress: true,
+          resizeToAvoidBottomInset: true,
+          stateManagement: true,
+          hideNavigationBarWhenKeyboardShows: true,
+          decoration: NavBarDecoration(
+            colorBehindNavBar: Colors.white,
+            border: Border.all(
+              color: AppColor.primaryColor,
+              width: 1,
+            ),
           ),
+          popAllScreensOnTapOfSelectedTab: true,
+          popActionScreens: PopActionScreensType.all,
+          itemAnimationProperties: const ItemAnimationProperties(
+            duration: Duration(milliseconds: 200),
+            curve: Curves.ease,
+          ),
+          screenTransitionAnimation: const ScreenTransitionAnimation(
+            animateTabTransition: true,
+            curve: Curves.ease,
+            duration: Duration(milliseconds: 200),
+          ),
+          navBarStyle: NavBarStyle.style13,
         ),
-        popAllScreensOnTapOfSelectedTab: true,
-        popActionScreens: PopActionScreensType.all,
-        itemAnimationProperties: const ItemAnimationProperties(
-          duration: Duration(milliseconds: 200),
-          curve: Curves.ease,
-        ),
-        screenTransitionAnimation: const ScreenTransitionAnimation(
-          animateTabTransition: true,
-          curve: Curves.ease,
-          duration: Duration(milliseconds: 200),
-        ),
-        navBarStyle: NavBarStyle.style13,
       ),
     );
   }

@@ -2,7 +2,7 @@ import 'package:ezone/controller/homepage/home_page_cont.dart';
 import 'package:ezone/core/constants/colors.dart';
 import 'package:ezone/core/constants/routes_name.dart';
 import 'package:ezone/view/view_modules/home_page/widgets/categories_list_home.dart';
-import 'package:ezone/view/view_modules/home_page/widgets/custom_appbar.dart';
+import 'package:ezone/view/shared_widgets/custom_appbar.dart';
 import 'package:ezone/view/view_modules/home_page/widgets/custom_card_home.dart';
 import 'package:ezone/view/view_modules/home_page/widgets/custom_title_home.dart';
 import 'package:ezone/view/view_modules/home_page/widgets/items_list_home.dart';
@@ -58,8 +58,11 @@ class HomePage extends StatelessWidget {
             child: ListView(
               children: [
                 CustomAppBar(
+                  icon: Icons.favorite,
                   titleAppBar: "Find Product",
-                  onPressedIcon: () {},
+                  onPressedIcon: () {
+                    Get.toNamed(AppRoutes().favorite);
+                  },
                   onPressedSearch: () {},
                 ),
                 const CustomCardHome(

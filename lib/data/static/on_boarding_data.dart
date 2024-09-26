@@ -1,5 +1,5 @@
 import 'package:ezone/core/constants/images.dart';
-import 'package:ezone/model/on_boarding_model.dart';
+import 'package:ezone/model/on_boardin/on_boarding_model.dart';
 import 'package:get/get.dart';
 
 List<OnBoardingModel> onBoardingList = [

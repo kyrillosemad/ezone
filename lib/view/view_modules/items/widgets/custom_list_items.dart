@@ -3,15 +3,18 @@ import 'package:ezone/core/constants/api_links.dart';
 import 'package:ezone/core/constants/colors.dart';
 import 'package:ezone/model/items/items_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 class CustomListItems extends StatelessWidget {
   final ItemsCont controller;
   final ItemsModel itemsModel;
+  final int index;
 
   const CustomListItems({
     Key? key,
     required this.controller,
     required this.itemsModel,
+    required this.index,
   }) : super(key: key);
 
   @override
@@ -68,13 +71,20 @@ class CustomListItems extends StatelessWidget {
                       fontFamily: "sans",
                     ),
                   ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.favorite,
-                      color: AppColor.primaryColor,
-                    ),
-                  ),
+                  Obx(() => IconButton(
+                        onPressed: () {
+                          controller.toggleFavorite(itemsModel.itemsId, index);
+                        },
+                        icon: controller.items[index]['favorite'] == 1
+                            ? const Icon(
+                                Icons.favorite,
+                                color: AppColor.primaryColor,
+                              )
+                            : const Icon(
+                                Icons.favorite_border,
+                                color: AppColor.primaryColor,
+                              ),
+                      )),
                 ],
               ),
             ],
