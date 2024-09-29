@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:ezone/controller/item_details/item_details_cont.dart';
 import 'package:ezone/core/classes/status.dart';
 import 'package:ezone/core/constants/api_links.dart';
 import 'package:ezone/core/constants/routes_name.dart';
@@ -6,6 +7,7 @@ import 'package:ezone/core/services/services.dart';
 import 'package:ezone/data/remote/favorite/add_favorite_req.dart';
 import 'package:ezone/data/remote/favorite/remove_from_favorite_req.dart';
 import 'package:ezone/data/remote/items/items_req.dart';
+import 'package:ezone/model/items/items_model.dart';
 import 'package:get/get.dart';
 
 class ItemsCont extends GetxController {
@@ -61,7 +63,8 @@ class ItemsCont extends GetxController {
     items.refresh();
   }
 
-  goToItemDetails() {
-    Get.toNamed(AppRoutes().itemDetails);
+  goToItemDetails(ItemsModel itemsModel) {
+    Get.delete<ItemDetailsCont>();
+    Get.toNamed(AppRoutes().itemDetails, arguments: {"itemsModel": itemsModel});
   }
 }

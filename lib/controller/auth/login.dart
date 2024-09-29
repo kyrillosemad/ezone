@@ -5,7 +5,7 @@ import 'package:ezone/core/classes/status.dart';
 import 'package:ezone/core/constants/api_links.dart';
 import 'package:ezone/core/constants/routes_name.dart';
 import 'package:ezone/core/services/services.dart';
-import 'package:ezone/data/remote/auth/login.dart';
+import 'package:ezone/data/remote/auth/login_req.dart';
 import 'package:ezone/view/shared_widgets/error_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -23,16 +23,20 @@ class LoginCont extends GetxController {
       await loginFun();
       if (reqStatus.value == Status.success) {
         if (data["status"] == "success") {
-          Get.offAllNamed(AppRoutes().homePage);
-          Get.delete<LoginCont>();
-          services.sharedPref!
-              .setString("userId", data["data"]['user_id'].toString());
-          services.sharedPref!
-              .setString("userName", data["data"]['users_name'].toString());
-          services.sharedPref!
-              .setString("userEmail", data["data"]['users_email'].toString());
-          services.sharedPref!
-              .setString("userPhone", data["data"]['users_phone'].toString());
+          if (data['status']['users_approve'] == "1") {
+            Get.offAllNamed(AppRoutes().homePage);
+            Get.delete<LoginCont>();
+            services.sharedPref!
+                .setString("userId", data["data"]['user_id'].toString());
+            services.sharedPref!
+                .setString("userName", data["data"]['users_name'].toString());
+            services.sharedPref!
+                .setString("userEmail", data["data"]['users_email'].toString());
+            services.sharedPref!
+                .setString("userPhone", data["data"]['users_phone'].toString());
+          } else {
+            Get.toNamed(AppRoutes().emailVerifyCode);
+          }
         } else {
           errorDialog("Wrong Email Or Password !", context);
         }

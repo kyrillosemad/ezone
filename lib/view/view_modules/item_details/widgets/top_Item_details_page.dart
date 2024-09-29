@@ -1,10 +1,16 @@
+// ignore_for_file: must_be_immutable
+
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ezone/core/constants/api_links.dart';
 import 'package:ezone/core/constants/colors.dart';
-import 'package:ezone/core/constants/images.dart';
+import 'package:ezone/model/items/items_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 class TopItemDetailsPage extends StatelessWidget {
-  const TopItemDetailsPage({super.key});
+  ItemsModel itemsModel = ItemsModel();
+  TopItemDetailsPage({super.key, required this.itemsModel});
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +26,20 @@ class TopItemDetailsPage extends StatelessWidget {
               color: AppColor.secondColor),
         ),
         Positioned(
-            top: 30.0,
+            top: 50.0,
             right: Get.width / 8,
             left: Get.width / 8,
             child: Hero(
-              tag: "",
-              child: Image.asset(AppImages().logo),
+              tag: "${itemsModel.itemsId}",
+              child: CachedNetworkImage(
+                imageUrl: "${AppLink.imagesItems}/${itemsModel.itemsImage}",
+                height: 200,
+                fit: BoxFit.contain,
+                placeholder: (context, url) =>
+                    Lottie.asset("assets/lottie/loading.json", height: 100),
+                errorWidget: (context, url, error) =>
+                    const Icon(Icons.error, size: 60, color: Colors.red),
+              ),
             ))
       ],
     );
