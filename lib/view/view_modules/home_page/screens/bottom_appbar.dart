@@ -1,5 +1,6 @@
 import 'package:ezone/controller/homepage/bottom_app_bar_cont.dart';
 import 'package:ezone/core/constants/colors.dart';
+import 'package:ezone/core/constants/routes_name.dart';
 import 'package:ezone/core/functions/app_exit_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,6 +25,14 @@ class _BottomNavState extends State<BottomNav> {
           context,
           controller: controller.controller,
           screens: controller.buildScreens(),
+          onItemSelected: (value) {
+            if (value == 1) {
+              Get.toNamed(AppRoutes().favorite);
+            }
+            if (value == 2) {
+              Get.toNamed(AppRoutes().cart);
+            }
+          },
           items: controller.navBarsItems(),
           confineInSafeArea: true,
           backgroundColor: Colors.white,

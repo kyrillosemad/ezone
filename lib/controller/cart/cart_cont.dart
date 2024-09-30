@@ -17,10 +17,11 @@ class CartCont extends GetxController {
 
   RxInt totalItemCount = 0.obs;
 
-  Map totalCartData = {};
-  List cartItemsData = [];
+  RxMap totalCartData = {}.obs;
+  RxList cartItemsData = [].obs;
 
   addToCart(itemId, BuildContext context) async {
+    reqStatus.value = Status.loading;
     Either<Status, Map> response = await addToCartReq(AppLink.cartAdd, {
       "usersid": services.sharedPref!.getString("userId"),
       "itemsid": itemId.toString(),
@@ -30,10 +31,12 @@ class CartCont extends GetxController {
       errorDialog("There's Something Wrong , Please Try Again $l ", context);
     }, (r) {
       totalItemCount.value = totalItemCount.value + 1;
+      viewCartData();
     });
   }
 
   deleteFromCart(itemId, BuildContext context) async {
+    reqStatus.value = Status.loading;
     Either<Status, Map> response = await deleteFromCartReq(AppLink.cartDelete, {
       "usersid": services.sharedPref!.getString("userId"),
       "itemsid": itemId.toString(),
@@ -43,6 +46,7 @@ class CartCont extends GetxController {
       errorDialog("There's Something Wrong , Please Try Again $l ", context);
     }, (r) {
       totalItemCount.value = totalItemCount.value - 1;
+      viewCartData();
     });
   }
 
@@ -66,6 +70,8 @@ class CartCont extends GetxController {
 
   viewCartData() async {
     reqStatus.value = Status.loading;
+    totalCartData.clear();
+    cartItemsData.clear();
 
     Either<Status, Map> response = await viewAllCartDataReq(AppLink.cartView, {
       "usersid": services.sharedPref!.getString("userId"),
@@ -73,19 +79,16 @@ class CartCont extends GetxController {
 
     response.fold((l) {
       reqStatus.value = l;
-      totalCartData = {};
-      cartItemsData = [];
+      totalCartData.clear();
+      cartItemsData.clear();
     }, (r) {
-      reqStatus.value = Status.success;
-      if (r['status'] == "success") {
-        totalCartData = r["countprice"];
+      if (r['datacart']['status'] == "success") {
+        reqStatus.value = Status.success;
+        totalCartData.value = r["countprice"];
         cartItemsData.addAll(r['datacart']['data']);
       } else {
         reqStatus.value = Status.empty;
       }
     });
-    update();
-    print(totalCartData);
-    print(cartItemsData);
   }
 }

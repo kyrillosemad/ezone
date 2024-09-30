@@ -8,7 +8,8 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 class ListItemsHome extends GetView<HomePageCont> {
-  const ListItemsHome({Key? key}) : super(key: key);
+  final HomePageCont homePageCont;
+  const ListItemsHome({Key? key, required this.homePageCont}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,7 @@ class ListItemsHome extends GetView<HomePageCont> {
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, i) {
             return ItemsHome(
+                homePageCont: homePageCont,
                 itemsModel: ItemsModel.fromJson(controller.items[i]));
           }),
     );
@@ -28,39 +30,49 @@ class ListItemsHome extends GetView<HomePageCont> {
 
 class ItemsHome extends StatelessWidget {
   final ItemsModel itemsModel;
-  const ItemsHome({Key? key, required this.itemsModel}) : super(key: key);
+  final HomePageCont homePageCont;
+  const ItemsHome(
+      {Key? key, required this.itemsModel, required this.homePageCont})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          margin: const EdgeInsets.symmetric(horizontal: 10),
-          child: CachedNetworkImage(
-            imageUrl: "${AppLink.imagesItems}/${itemsModel.itemsImage}",
-            height: 100,
-            fit: BoxFit.cover,
-            placeholder: (context, url) =>
-                Lottie.asset("assets/lottie/loading.json", height: 100),
-            errorWidget: (context, url, error) =>
-                const Icon(Icons.error, size: 60, color: Colors.red),
+    return InkWell(
+      onTap: () {
+        homePageCont.goToItemDetails(itemsModel);
+      },
+      child: Stack(
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            margin: const EdgeInsets.symmetric(horizontal: 10),
+            child: CachedNetworkImage(
+              imageUrl: "${AppLink.imagesItems}/${itemsModel.itemsImage}",
+              height: 200,
+              width: 150,
+              fit: BoxFit.contain,
+              placeholder: (context, url) =>
+                  Lottie.asset("assets/lottie/loading.json", height: 100),
+              errorWidget: (context, url, error) =>
+                  const Icon(Icons.error, size: 60, color: Colors.red),
+            ),
           ),
-        ),
-        Container(
-          decoration: BoxDecoration(
-              color: AppColor.black.withOpacity(0.3),
-              borderRadius: BorderRadius.circular(20)),
-          height: 120,
-          width: 200,
-        ),
-        Positioned(
-            left: 10,
-            child: Text(
-              "${itemsModel.itemsName}",
-              style: const TextStyle(color: Colors.white, fontSize: 14),
-            ))
-      ],
+          Container(
+            margin: const EdgeInsets.only(right: 20),
+            decoration: BoxDecoration(
+                color: AppColor.black.withOpacity(0.3),
+                borderRadius: BorderRadius.circular(20)),
+            height: 130,
+            width: 200,
+          ),
+          Positioned(
+              left: 10,
+              child: Text(
+                "${itemsModel.itemsName}",
+                style: const TextStyle(color: Colors.white, fontSize: 14),
+              ))
+        ],
+      ),
     );
   }
 }

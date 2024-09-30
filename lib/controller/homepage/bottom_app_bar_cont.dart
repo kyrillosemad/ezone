@@ -1,6 +1,4 @@
-
 import 'package:ezone/core/constants/colors.dart';
-
 import 'package:ezone/view/view_modules/home_page/screens/home_page.dart';
 import 'package:ezone/view/view_modules/home_page/screens/profile_page.dart';
 import 'package:ezone/view/view_modules/home_page/screens/settings_page.dart';
@@ -15,6 +13,8 @@ class BottomNavCont extends GetxController {
   List<Widget> buildScreens() {
     return [
       const HomePage(),
+      const HomePage(),
+      const HomePage(),
       const ProfilePage(),
       const SettingsPage(),
     ];
@@ -27,6 +27,18 @@ class BottomNavCont extends GetxController {
           inactiveColorPrimary: AppColor.grey,
           icon: const Icon(Icons.home),
           title: "Home",
+          textStyle: TextStyle(fontSize: 15.sp)),
+      PersistentBottomNavBarItem(
+          activeColorPrimary: AppColor.primaryColor,
+          inactiveColorPrimary: AppColor.grey,
+          icon: const Icon(Icons.favorite),
+          title: "Favorite",
+          textStyle: TextStyle(fontSize: 15.sp)),
+      PersistentBottomNavBarItem(
+          activeColorPrimary: AppColor.primaryColor,
+          inactiveColorPrimary: AppColor.grey,
+          icon: const Icon(Icons.shopping_cart_outlined),
+          title: "Cart",
           textStyle: TextStyle(fontSize: 15.sp)),
       PersistentBottomNavBarItem(
           activeColorPrimary: AppColor.primaryColor,

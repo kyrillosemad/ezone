@@ -15,7 +15,6 @@ class FavoritePage extends StatelessWidget {
   Widget build(BuildContext context) {
     FavoriteCont controller = Get.put(FavoriteCont(), permanent: false);
     controller.getAllFavorite();
-
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
@@ -26,7 +25,7 @@ class FavoritePage extends StatelessWidget {
               height: 1.h,
             ),
             CustomAppBar(
-              icon:Icons.favorite,
+              icon: Icons.favorite,
               titleAppBar: "Your Favorites",
               onPressedIcon: () {},
               onPressedSearch: () {},
@@ -54,6 +53,7 @@ class FavoritePage extends StatelessWidget {
                         ),
                         itemBuilder: (context, index) {
                           return CustomListFavoriteItems(
+                            
                             index: index,
                             favoriteModel: FavoriteModel.fromJson(
                                 controller.favorite[index]),

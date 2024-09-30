@@ -5,7 +5,10 @@ import 'package:ezone/core/constants/api_links.dart';
 import 'package:ezone/core/constants/routes_name.dart';
 import 'package:ezone/core/services/services.dart';
 import 'package:ezone/data/remote/homepage.dart/homepage_data_req.dart';
+import 'package:ezone/model/items/items_model.dart';
 import 'package:get/get.dart';
+
+import '../item_details/item_details_cont.dart';
 
 class HomePageCont extends GetxController {
   Rx<Status> reqStatus = Status.initial.obs;
@@ -43,5 +46,11 @@ class HomePageCont extends GetxController {
       "categories": categories,
       "selectedCat": selectedCat,
     });
+  }
+
+  
+  goToItemDetails(ItemsModel itemsModel) {
+    Get.delete<ItemDetailsCont>();
+    Get.toNamed(AppRoutes().itemDetails, arguments: {"itemsModel": itemsModel});
   }
 }

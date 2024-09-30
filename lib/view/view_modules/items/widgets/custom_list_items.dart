@@ -37,7 +37,7 @@ class CustomListItems extends StatelessWidget {
                 child: CachedNetworkImage(
                   imageUrl: "${AppLink.imagesItems}/${itemsModel.itemsImage}",
                   height: 100,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                   placeholder: (context, url) =>
                       Lottie.asset("assets/lottie/loading.json", height: 100),
                   errorWidget: (context, url, error) =>

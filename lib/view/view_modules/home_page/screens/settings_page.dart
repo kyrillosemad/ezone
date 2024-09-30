@@ -24,15 +24,14 @@ class SettingsPage extends StatelessWidget {
           Positioned(
               top: Get.width / 3,
               child: Container(
-                padding: const EdgeInsets.all(4),
+                padding: const EdgeInsets.all(5),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(100)),
                 child: CircleAvatar(
-                  radius: 50,
-                  backgroundColor: Colors.grey[100],
-                  backgroundImage: const AssetImage(AppImages.loading),
-                ),
+                    radius: 50,
+                    backgroundColor: Colors.grey[100],
+                    backgroundImage: AssetImage(AppImages().logo)),
               )),
         ]),
         const SizedBox(height: 80),

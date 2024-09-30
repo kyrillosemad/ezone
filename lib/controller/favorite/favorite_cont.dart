@@ -1,9 +1,12 @@
 import 'package:dartz/dartz.dart';
+import 'package:ezone/controller/item_details/item_details_cont.dart';
 import 'package:ezone/core/classes/status.dart';
 import 'package:ezone/core/constants/api_links.dart';
+import 'package:ezone/core/constants/routes_name.dart';
 import 'package:ezone/core/services/services.dart';
 import 'package:ezone/data/remote/favorite/remove_from_favorite_req.dart';
 import 'package:ezone/data/remote/favorite/view_favorite_req.dart';
+import 'package:ezone/model/items/items_model.dart';
 import 'package:get/get.dart';
 
 class FavoriteCont extends GetxController {
@@ -38,8 +41,14 @@ class FavoriteCont extends GetxController {
     }, (r) {
       if (r['status'] == "success") {
         favorite.removeAt(index);
-        Get.snackbar("Success", "Removed from favorites");
+        Get.snackbar("Success", "Removed from favorites",
+            duration: const Duration(milliseconds: 1000));
       }
     });
+  }
+
+  goToItemDetails(ItemsModel itemsModel) {
+    Get.delete<ItemDetailsCont>();
+    Get.toNamed(AppRoutes().itemDetails, arguments: {"itemsModel": itemsModel});
   }
 }

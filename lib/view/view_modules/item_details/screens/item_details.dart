@@ -1,7 +1,6 @@
 import 'package:ezone/controller/cart/cart_cont.dart';
 import 'package:ezone/controller/item_details/item_details_cont.dart';
 import 'package:ezone/core/classes/status.dart';
-import 'package:ezone/core/constants/routes_name.dart';
 import 'package:ezone/view/view_modules/item_details/widgets/item_price_and_count.dart';
 import 'package:ezone/view/view_modules/item_details/widgets/sub_item_list.dart';
 import 'package:ezone/view/view_modules/item_details/widgets/top_Item_details_page.dart';
@@ -27,7 +26,7 @@ class ItemDetails extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10)),
                 color: AppColor.secondColor,
                 onPressed: () {
-                  Get.toNamed(AppRoutes().cart);
+                  itemDetailsController.goToCart();
                 },
                 child: const Text(
                   "Go To Cart",
