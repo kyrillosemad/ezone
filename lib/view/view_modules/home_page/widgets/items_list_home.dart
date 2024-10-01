@@ -39,6 +39,7 @@ class ItemsHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+      
         homePageCont.goToItemDetails(itemsModel);
       },
       child: Stack(
@@ -70,7 +71,16 @@ class ItemsHome extends StatelessWidget {
               child: Text(
                 "${itemsModel.itemsName}",
                 style: const TextStyle(color: Colors.white, fontSize: 14),
-              ))
+              )),
+          Positioned(
+              right: 30,
+              child: itemsModel.itemsDiscount == 0
+                  ? Container()
+                  : const CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      backgroundImage:
+                          AssetImage("assets/images/002-sale-tag.png"),
+                    )),
         ],
       ),
     );

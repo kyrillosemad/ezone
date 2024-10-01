@@ -1,6 +1,8 @@
 import 'package:ezone/controller/homepage/home_page_cont.dart';
+import 'package:ezone/controller/homepage/search_cont.dart';
 import 'package:ezone/core/constants/colors.dart';
 import 'package:ezone/core/constants/routes_name.dart';
+import 'package:ezone/view/view_modules/home_page/screens/search.dart';
 import 'package:ezone/view/view_modules/home_page/widgets/categories_list_home.dart';
 import 'package:ezone/view/shared_widgets/custom_appbar.dart';
 import 'package:ezone/view/view_modules/home_page/widgets/custom_card_home.dart';
@@ -17,6 +19,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SearchCont searchController = Get.put(SearchCont());
     HomePageCont controller = Get.put(HomePageCont());
     controller.getHomePageData();
     return Obx(() {
@@ -58,23 +61,34 @@ class HomePage extends StatelessWidget {
             child: ListView(
               children: [
                 CustomAppBar(
-                  icon: Icons.favorite,
+                  controller: searchController,
+                  icon: Icons.notifications,
                   titleAppBar: "Find Product",
-                  onPressedIcon: () {
-                    Get.toNamed(AppRoutes().favorite);
-                  },
+                  onPressedIcon: () {},
                   onPressedSearch: () {},
                 ),
-                const CustomCardHome(
-                  title: "A summer surprise",
-                  body: "Cashback 20%",
-                ),
-                const CustomTitleHome(title: "Categories"),
-                const ListCategoriesHome(),
-                const CustomTitleHome(title: "Products for You"),
-                ListItemsHome(homePageCont: controller),
-                const CustomTitleHome(title: "Offers"),
-                ListItemsHome(homePageCont: controller),
+                Obx(() {
+                  return searchController.isSearch.value == false
+                      ? Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const CustomCardHome(
+                              title: "A summer surprise",
+                              body: "Cashback 20%",
+                            ),
+                            const CustomTitleHome(title: "Categories"),
+                            const ListCategoriesHome(),
+                            const CustomTitleHome(title: "Products for You"),
+                            ListItemsHome(homePageCont: controller),
+                            const CustomTitleHome(title: "Offers"),
+                            ListItemsHome(homePageCont: controller),
+                          ],
+                        )
+                      : Search(
+                          search: searchController.searchText.toString(),
+                          controller: searchController,
+                        );
+                })
               ],
             ),
           ),

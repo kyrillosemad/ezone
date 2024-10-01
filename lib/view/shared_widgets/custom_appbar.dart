@@ -1,14 +1,17 @@
+import 'package:ezone/controller/homepage/search_cont.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class CustomAppBar extends StatelessWidget {
   final String titleAppBar;
   final IconData icon;
+  final SearchCont controller;
   final void Function()? onPressedIcon;
   final void Function()? onPressedSearch;
 
   const CustomAppBar(
       {Key? key,
+      required this.controller,
       required this.titleAppBar,
       required this.icon,
       this.onPressedIcon,
@@ -24,6 +27,18 @@ class CustomAppBar extends StatelessWidget {
         children: [
           Expanded(
             child: TextFormField(
+              controller: controller.searchText,
+              onChanged: (value) {
+                print(value);
+                if (value.isEmpty) {
+                  controller.isSearch.value = false;
+                  print(controller.isSearch.value);
+                } else {
+                  controller.isSearch.value = true;
+                  controller.search(value);
+                  print(controller.isSearch.value);
+                }
+              },
               decoration: InputDecoration(
                 prefixIcon: IconButton(
                   icon: const Icon(Icons.search),

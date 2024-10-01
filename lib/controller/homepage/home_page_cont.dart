@@ -15,6 +15,8 @@ class HomePageCont extends GetxController {
   List categories = [];
   List items = [];
 
+  bool isSearch = false;
+
   Services services = Get.find<Services>();
   var userId = Get.find<Services>().sharedPref!.getString("userId");
   var userEmail = Get.find<Services>().sharedPref!.getString("userEmail");
@@ -48,7 +50,6 @@ class HomePageCont extends GetxController {
     });
   }
 
-  
   goToItemDetails(ItemsModel itemsModel) {
     Get.delete<ItemDetailsCont>();
     Get.toNamed(AppRoutes().itemDetails, arguments: {"itemsModel": itemsModel});

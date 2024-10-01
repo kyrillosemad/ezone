@@ -1,13 +1,11 @@
 import 'package:ezone/controller/items/items_cont.dart';
 import 'package:ezone/core/classes/handling_data_view.dart';
-import 'package:ezone/core/constants/routes_name.dart';
 import 'package:ezone/model/items/items_model.dart';
-import 'package:ezone/view/shared_widgets/custom_appbar.dart';
+import 'package:ezone/view/shared_widgets/custom_app_bar.dart';
 import 'package:ezone/view/view_modules/items/widgets/custom_list_categories_in_items.dart';
 import 'package:ezone/view/view_modules/items/widgets/custom_list_items.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sizer/sizer.dart';
 
 class ItemsPage extends StatelessWidget {
   const ItemsPage({super.key});
@@ -18,21 +16,15 @@ class ItemsPage extends StatelessWidget {
     controller.getItemsData(controller.selectedCat + 1);
 
     return Scaffold(
+      appBar: const CustomAppBar2(title: "Items"),
       body: Container(
         padding: const EdgeInsets.all(15),
         child: Column(
           children: [
-            SizedBox(height: 2.h),
-            CustomAppBar(
-              icon: Icons.favorite,
-              titleAppBar: "Find Product",
-              onPressedIcon: () {
-                Get.toNamed(AppRoutes().favorite);
-              },
-              onPressedSearch: () {},
-            ),
-            const SizedBox(height: 10),
             ListCategoriesItems(controller: controller),
+            const SizedBox(
+              height: 5,
+            ),
             Expanded(
               child: Obx(() {
                 return HandlingDataView(
@@ -49,6 +41,7 @@ class ItemsPage extends StatelessWidget {
                       itemBuilder: (BuildContext context, index) {
                         ItemsModel itemsModel =
                             ItemsModel.fromJson(controller.items[index]);
+
                         return CustomListItems(
                           index: index,
                           itemsModel: itemsModel,

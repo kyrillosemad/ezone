@@ -40,11 +40,24 @@ class ItemDetails extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text("${itemDetailsController.itemsModel.itemsName}",
-                  style: const TextStyle(
-                      fontSize: 40,
-                      color: AppColor.secondColor,
-                      fontWeight: FontWeight.bold)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("${itemDetailsController.itemsModel.itemsName}",
+                      style: const TextStyle(
+                          fontSize: 40,
+                          color: AppColor.secondColor,
+                          fontWeight: FontWeight.bold)),
+                  itemDetailsController.itemsModel.itemsDiscount == 0
+                      ? Container()
+                      : Text(
+                          "- ${itemDetailsController.itemsModel.itemsDiscount} %",
+                          style: const TextStyle(
+                            fontSize: 25,
+                            color: AppColor.secondColor,
+                          )),
+                ],
+              ),
               const SizedBox(height: 10),
               Obx(() {
                 return ItemPriceAndCount(
@@ -58,7 +71,8 @@ class ItemDetails extends StatelessWidget {
                           itemDetailsController.itemsModel.itemsId, context);
                     }
                   },
-                  price: "${itemDetailsController.itemsModel.itemsPrice}",
+                  price:
+                      "${itemDetailsController.itemsModel.itemsPriceDiscount}",
                   count: cartController.reqStatus.value == Status.loading
                       ? ""
                       : "${cartController.totalItemCount}",
@@ -74,3 +88,4 @@ class ItemDetails extends StatelessWidget {
         ]));
   }
 }
+   

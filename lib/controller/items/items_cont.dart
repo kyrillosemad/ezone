@@ -44,6 +44,7 @@ class ItemsCont extends GetxController {
         items.clear();
       }
     });
+   
   }
 
   Future<void> toggleFavorite(itemsId, index) async {

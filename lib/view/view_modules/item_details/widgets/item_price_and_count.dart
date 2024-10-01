@@ -41,7 +41,7 @@ class ItemPriceAndCount extends StatelessWidget {
         Text(
           "$price \$",
           style: const TextStyle(
-              color: AppColor.primaryColor, fontSize: 30, height: 1.1),
+              color: AppColor.fourthColor, fontSize: 30, height: 1.1),
         )
       ],
     );

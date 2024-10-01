@@ -5,7 +5,7 @@ class ItemsModel {
   String? itemsDesc;
   String? itemsDescAr;
   int? itemsCount;
-  int? itemsPrice;
+  double? itemsPrice;
   int? itemsDiscount;
   int? itemsActive;
   String? itemsImage;
@@ -17,7 +17,7 @@ class ItemsModel {
   String? categoriesImage;
   String? categoriesDatetime;
   int? favorite;
-
+  double? itemsPriceDiscount;
   ItemsModel(
       {this.itemsId,
       this.itemsName,
@@ -36,6 +36,7 @@ class ItemsModel {
       this.categoriesNamaAr,
       this.categoriesImage,
       this.favorite,
+      this.itemsPriceDiscount,
       this.categoriesDatetime});
 
   ItemsModel.fromJson(Map<String, dynamic> json) {
@@ -45,7 +46,9 @@ class ItemsModel {
     itemsDesc = json['items_desc'];
     itemsDescAr = json['items_desc_ar'];
     itemsCount = json['items_count'];
-    itemsPrice = json['items_price'];
+    itemsPrice = (json['items_price'] is int)
+        ? (json['items_price'] as int).toDouble()
+        : json['items_price'];
     itemsDiscount = json['items_discount'];
     itemsActive = json['items_active'];
     itemsImage = json['items_image'];
@@ -56,6 +59,9 @@ class ItemsModel {
     categoriesNamaAr = json['categories_nama_ar'];
     categoriesImage = json['categories_image'];
     categoriesDatetime = json['categories_datetime'];
+    itemsPriceDiscount = (json['itemspricedisount'] is int)
+        ? (json['itemspricedisount'] as int).toDouble()
+        : json['itemspricedisount'];
     favorite = json['favorite'];
   }
 
