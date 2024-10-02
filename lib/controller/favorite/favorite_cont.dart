@@ -14,7 +14,6 @@ class FavoriteCont extends GetxController {
   Rx<Status> reqStatus = Status.initial.obs;
 
   Services services = Get.put(Services());
-
   getAllFavorite() async {
     reqStatus.value = Status.loading;
     Either<Status, Map> response = await viewFavoriteReq(AppLink.favoriteView, {

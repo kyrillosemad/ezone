@@ -35,10 +35,12 @@ class CartPage extends StatelessWidget {
             );
           } else if (controller.reqStatus == Status.success) {
             return CartBottomNav(
+              discount: controller.discount.value.toString(),
+              controller: controller,
               price: controller.totalCartData['totalprice']?.toString() ?? '0',
               shipping: "300",
               totalPrice: controller.totalCartData['totalprice'] != null
-                  ? "${controller.totalCartData['totalprice'] + 300}"
+                  ? "${(controller.totalCartData['totalprice'] + 300) - ((controller.totalCartData['totalprice'] + 300) * controller.discount.toDouble() / 100)}"
                   : "300",
             );
           } else if (controller.reqStatus == Status.empty) {
@@ -64,7 +66,6 @@ class CartPage extends StatelessWidget {
                         Lottie.asset("assets/lottie/server.json", height: 200),
                   );
                 } else if (controller.reqStatus == Status.loading) {
-                  print("ho");
                   return Center(
                     child: Lottie.asset("assets/lottie/cart.json", height: 140),
                   );

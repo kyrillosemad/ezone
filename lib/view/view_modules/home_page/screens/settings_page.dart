@@ -1,6 +1,7 @@
 import 'package:ezone/controller/settings/settings_cont.dart';
 import 'package:ezone/core/constants/colors.dart';
 import 'package:ezone/core/constants/images.dart';
+import 'package:ezone/core/constants/routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -45,7 +46,9 @@ class SettingsPage extends StatelessWidget {
                 title: const Text("Disable Notifications"),
               ),
               ListTile(
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed(AppRoutes().viewAllAddresses);
+                },
                 trailing: const Icon(Icons.location_on_outlined),
                 title: const Text("Address"),
               ),

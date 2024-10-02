@@ -17,4 +17,6 @@ class AppRoutes {
   final String itemDetails = "itemsDetails";
   final String cart = "cart";
 
+  final String addNewAddress = "addNewAddress";
+  final String viewAllAddresses = "viewAllAddresses";
 }

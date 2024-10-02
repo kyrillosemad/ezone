@@ -11,7 +11,7 @@ import 'package:sizer/sizer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Get.putAsync(() => Services().init());
+  await Get.putAsync(() => Services().init());  
   runApp(const MyApp());
 }
 

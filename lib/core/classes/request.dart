@@ -13,12 +13,14 @@ class Request {
           var data = jsonDecode(response.body);
           return right(data);
         } else {
+  
           return left(Status.serverFailure);
         }
       } else {
         return left(Status.internetFailure);
       }
     } catch (e) {
+
       return left(Status.serverFailure);
     }
   }

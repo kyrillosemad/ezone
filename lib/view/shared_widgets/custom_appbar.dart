@@ -29,14 +29,11 @@ class CustomAppBar extends StatelessWidget {
             child: TextFormField(
               controller: controller.searchText,
               onChanged: (value) {
-                print(value);
                 if (value.isEmpty) {
                   controller.isSearch.value = false;
-                  print(controller.isSearch.value);
                 } else {
                   controller.isSearch.value = true;
                   controller.search(value);
-                  print(controller.isSearch.value);
                 }
               },
               decoration: InputDecoration(

@@ -1,9 +1,11 @@
 // ignore_for_file: use_build_context_synchronously
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dartz/dartz.dart';
 import 'package:ezone/core/classes/status.dart';
 import 'package:ezone/core/constants/api_links.dart';
 import 'package:ezone/core/services/services.dart';
 import 'package:ezone/data/remote/cart/add_to_cart_req.dart';
+import 'package:ezone/data/remote/cart/chech_coupon_req.dart';
 import 'package:ezone/data/remote/cart/delete_from_cart_req.dart';
 import 'package:ezone/data/remote/cart/get_cart_count.dart';
 import 'package:ezone/data/remote/cart/view_all_cart_data_req.dart';
@@ -14,8 +16,10 @@ import 'package:get/get.dart';
 class CartCont extends GetxController {
   Services services = Get.put(Services());
   Rx<Status> reqStatus = Status.initial.obs;
-
+  TextEditingController couponNameCont = TextEditingController();
   RxInt totalItemCount = 0.obs;
+
+  RxInt discount = 0.obs;
 
   RxMap totalCartData = {}.obs;
   RxList cartItemsData = [].obs;
@@ -90,5 +94,30 @@ class CartCont extends GetxController {
         reqStatus.value = Status.empty;
       }
     });
+  }
+
+  checkCoupon(couponName, BuildContext context) async {
+    Either<Status, Map> response = await checkCouponReq(AppLink.checkCoupon, {
+      "couponname": couponName,
+    });
+    response.fold((l) {
+      errorDialog("NoT Valid Coupon", context);
+    }, (r) {
+      if (r['status'] == 'success') {
+        discount.value = r['data']['coupon_discount'];
+        AwesomeDialog(
+          animType: AnimType.scale,
+          dialogType: DialogType.success,
+          title: 'Success',
+          desc: "The Discount Is Applied",
+          btnOkColor: Colors.green,
+          btnOkOnPress: () {},
+          context: context,
+        ).show();
+      } else {
+        errorDialog("NoT Valid Coupon", context);
+      }
+    });
+    couponNameCont.clear();
   }
 }

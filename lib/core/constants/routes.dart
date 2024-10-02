@@ -1,4 +1,6 @@
 import 'package:ezone/core/constants/routes_name.dart';
+import 'package:ezone/view/view_modules/address/screens/new_address.dart';
+import 'package:ezone/view/view_modules/address/screens/view_addresses.dart';
 import 'package:ezone/view/view_modules/auth/screens/email_verify_code.dart';
 import 'package:ezone/view/view_modules/auth/screens/forget_password.dart';
 import 'package:ezone/view/view_modules/auth/screens/login.dart';
@@ -32,4 +34,6 @@ Map<String, Widget Function(BuildContext)> routes = {
   AppRoutes().items: (context) => const ItemsPage(),
   AppRoutes().itemDetails: (context) => const ItemDetails(),
   AppRoutes().cart: (context) => const CartPage(),
+    AppRoutes().addNewAddress: (context) => const AddressAddDetails(),
+      AppRoutes().viewAllAddresses: (context) => const AddressView(),
 };
