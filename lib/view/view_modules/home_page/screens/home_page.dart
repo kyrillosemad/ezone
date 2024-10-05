@@ -21,7 +21,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     SearchCont searchController = Get.put(SearchCont());
     HomePageCont controller = Get.put(HomePageCont());
-    controller.getHomePageData();
     return Obx(() {
       if (controller.reqStatus.value == Status.internetFailure) {
         return Center(
@@ -62,9 +61,11 @@ class HomePage extends StatelessWidget {
               children: [
                 CustomAppBar(
                   controller: searchController,
-                  icon: Icons.notifications,
+                  icon: Icons.favorite,
                   titleAppBar: "Find Product",
-                  onPressedIcon: () {},
+                  onPressedIcon: () {
+                    controller.goToFavorite();
+                  },
                   onPressedSearch: () {},
                 ),
                 Obx(() {

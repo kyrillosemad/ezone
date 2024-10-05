@@ -9,12 +9,12 @@ class CustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
-      foregroundColor: AppColor.grey,
+      foregroundColor: AppColor.primaryColor,
       elevation: 0,
       centerTitle: true,
       title: Text(
         title,
-        style: const TextStyle(fontSize: 22, color: AppColor.grey),
+        style: const TextStyle(fontSize: 22, color: AppColor.primaryColor),
       ),
     );
   }

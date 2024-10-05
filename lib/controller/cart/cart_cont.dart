@@ -1,8 +1,10 @@
 // ignore_for_file: use_build_context_synchronously
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dartz/dartz.dart';
+import 'package:ezone/controller/checkout/checkout_cont.dart';
 import 'package:ezone/core/classes/status.dart';
 import 'package:ezone/core/constants/api_links.dart';
+import 'package:ezone/core/constants/routes_name.dart';
 import 'package:ezone/core/services/services.dart';
 import 'package:ezone/data/remote/cart/add_to_cart_req.dart';
 import 'package:ezone/data/remote/cart/chech_coupon_req.dart';
@@ -23,6 +25,8 @@ class CartCont extends GetxController {
 
   RxMap totalCartData = {}.obs;
   RxList cartItemsData = [].obs;
+
+  String? couponId;
 
   addToCart(itemId, BuildContext context) async {
     reqStatus.value = Status.loading;
@@ -104,6 +108,7 @@ class CartCont extends GetxController {
       errorDialog("NoT Valid Coupon", context);
     }, (r) {
       if (r['status'] == 'success') {
+        couponId = r['data']['coupon_id'].toString();
         discount.value = r['data']['coupon_discount'];
         AwesomeDialog(
           animType: AnimType.scale,
@@ -115,9 +120,24 @@ class CartCont extends GetxController {
           context: context,
         ).show();
       } else {
+        couponId = null;
         errorDialog("NoT Valid Coupon", context);
       }
     });
     couponNameCont.clear();
+  }
+
+  goToPlaceOrder(BuildContext context,String couponDiscount) {
+    if (cartItemsData.isEmpty) {
+      errorDialog("The Cart Is Empty", context);
+    } else {
+      Get.delete<CheckoutCont>();
+      Get.toNamed(AppRoutes().checkout, arguments: {
+        "couponId": couponId ?? "0",
+        "orderPrice": totalCartData['totalprice'].toString(),
+        "shipping": "300",
+        "couponDiscount":couponDiscount.toString()
+      });
+    }
   }
 }

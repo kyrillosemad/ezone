@@ -13,8 +13,7 @@ class BottomNavCont extends GetxController {
   List<Widget> buildScreens() {
     return [
       const HomePage(),
-      const HomePage(),
-      const HomePage(),
+      const ProfilePage(),
       const ProfilePage(),
       const SettingsPage(),
     ];
@@ -31,20 +30,14 @@ class BottomNavCont extends GetxController {
       PersistentBottomNavBarItem(
           activeColorPrimary: AppColor.primaryColor,
           inactiveColorPrimary: AppColor.grey,
-          icon: const Icon(Icons.favorite),
-          title: "Favorite",
-          textStyle: TextStyle(fontSize: 15.sp)),
-      PersistentBottomNavBarItem(
-          activeColorPrimary: AppColor.primaryColor,
-          inactiveColorPrimary: AppColor.grey,
-          icon: const Icon(Icons.shopping_cart_outlined),
-          title: "Cart",
-          textStyle: TextStyle(fontSize: 15.sp)),
-      PersistentBottomNavBarItem(
-          activeColorPrimary: AppColor.primaryColor,
-          inactiveColorPrimary: AppColor.grey,
           icon: const Icon(Icons.person),
           title: "Profile",
+          textStyle: TextStyle(fontSize: 15.sp)),
+      PersistentBottomNavBarItem(
+          activeColorPrimary: AppColor.primaryColor,
+          inactiveColorPrimary: AppColor.grey,
+          icon: const Icon(Icons.notifications),
+          title: "Notifications",
           textStyle: TextStyle(fontSize: 15.sp)),
       PersistentBottomNavBarItem(
           activeColorPrimary: AppColor.primaryColor,

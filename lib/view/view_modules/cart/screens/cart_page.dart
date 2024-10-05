@@ -37,10 +37,12 @@ class CartPage extends StatelessWidget {
             return CartBottomNav(
               discount: controller.discount.value.toString(),
               controller: controller,
-              price: controller.totalCartData['totalprice']?.toString() ?? '0',
+              price: (controller.totalCartData['totalprice'] != null
+                  ? controller.totalCartData['totalprice'].toStringAsFixed(2)
+                  : '0.00'),
               shipping: "300",
               totalPrice: controller.totalCartData['totalprice'] != null
-                  ? "${(controller.totalCartData['totalprice'] + 300) - ((controller.totalCartData['totalprice'] + 300) * controller.discount.toDouble() / 100)}"
+                  ? "${(((controller.totalCartData['totalprice']) - ((controller.totalCartData['totalprice']) * controller.discount.toDouble() / 100)) + 300).toStringAsFixed(2)}"
                   : "300",
             );
           } else if (controller.reqStatus == Status.empty) {
@@ -102,7 +104,8 @@ class CartPage extends StatelessWidget {
                                     },
                                     image: cartModel.itemsImage.toString(),
                                     name: "${cartModel.itemsName}",
-                                    price: "${cartModel.itemsPrice}",
+                                    price:
+                                        "${cartModel.itemsPrice! - (cartModel.itemsPrice! * cartModel.itemsDiscount!.toInt() / 100)}",
                                     count: "${cartModel.countitems}",
                                   );
                                 },

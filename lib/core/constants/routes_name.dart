@@ -19,4 +19,6 @@ class AppRoutes {
 
   final String addNewAddress = "addNewAddress";
   final String viewAllAddresses = "viewAllAddresses";
+
+  final String checkout = "checkout";
 }

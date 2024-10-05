@@ -16,7 +16,6 @@ class ItemDetails extends StatelessWidget {
     CartCont cartController = Get.put(CartCont());
     ItemDetailsCont itemDetailsController = Get.put(ItemDetailsCont());
     cartController.getTotalItemCount(itemDetailsController.itemsModel.itemsId);
-
     return Scaffold(
         bottomNavigationBar: Container(
             margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),

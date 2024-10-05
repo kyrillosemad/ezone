@@ -8,6 +8,7 @@ import 'package:ezone/view/view_modules/auth/screens/reset_password.dart';
 import 'package:ezone/view/view_modules/auth/screens/signup.dart';
 import 'package:ezone/view/view_modules/auth/screens/pas_verify_code.dart';
 import 'package:ezone/view/view_modules/cart/screens/cart_page.dart';
+import 'package:ezone/view/view_modules/checkout/screens/checkout.dart';
 import 'package:ezone/view/view_modules/home_page/screens/bottom_appbar.dart';
 import 'package:ezone/view/view_modules/home_page/screens/favorite_page.dart';
 import 'package:ezone/view/view_modules/home_page/screens/home_page.dart';
@@ -34,6 +35,7 @@ Map<String, Widget Function(BuildContext)> routes = {
   AppRoutes().items: (context) => const ItemsPage(),
   AppRoutes().itemDetails: (context) => const ItemDetails(),
   AppRoutes().cart: (context) => const CartPage(),
-    AppRoutes().addNewAddress: (context) => const AddressAddDetails(),
-      AppRoutes().viewAllAddresses: (context) => const AddressView(),
+  AppRoutes().addNewAddress: (context) => const AddressAddDetails(),
+  AppRoutes().viewAllAddresses: (context) => const AddressView(),
+  AppRoutes().checkout: (context) => const Checkout(),
 };

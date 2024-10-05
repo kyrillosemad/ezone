@@ -1,5 +1,3 @@
-import 'package:ezone/controller/cart/cart_cont.dart';
-import 'package:ezone/controller/favorite/favorite_cont.dart';
 import 'package:ezone/controller/homepage/bottom_app_bar_cont.dart';
 import 'package:ezone/core/constants/colors.dart';
 import 'package:ezone/core/constants/routes_name.dart';
@@ -23,20 +21,17 @@ class _BottomNavState extends State<BottomNav> {
     return WillPopScope(
       onWillPop: appExitAlert,
       child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+            backgroundColor: AppColor.primaryColor,
+            onPressed: () {
+              Get.toNamed(AppRoutes().cart);
+            },
+            child: const Icon(Icons.shopping_basket_outlined)),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         body: PersistentTabView(
           context,
           controller: controller.controller,
           screens: controller.buildScreens(),
-          onItemSelected: (value) {
-            if (value == 1) {
-              Get.delete<FavoriteCont>();
-              Get.toNamed(AppRoutes().favorite);
-            }
-            if (value == 2) {
-              Get.delete<CartCont>();
-              Get.toNamed(AppRoutes().cart);
-            }
-          },
           items: controller.navBarsItems(),
           confineInSafeArea: true,
           backgroundColor: Colors.white,

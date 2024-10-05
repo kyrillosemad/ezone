@@ -40,11 +40,11 @@ class CartBottomNav extends StatelessWidget {
           children: [
             Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: const Text("shipping ", style: TextStyle(fontSize: 16))),
+                child: const Text("Discount", style: TextStyle(fontSize: 16))),
             Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child:
-                    Text("$shipping \$", style: const TextStyle(fontSize: 16)))
+                child: Text("- $discount %",
+                    style: const TextStyle(fontSize: 16, color: Colors.green)))
           ],
         ),
         Row(
@@ -52,11 +52,11 @@ class CartBottomNav extends StatelessWidget {
           children: [
             Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: const Text("Discount", style: TextStyle(fontSize: 16))),
+                child: const Text("shipping ", style: TextStyle(fontSize: 16))),
             Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Text("- $discount %",
-                    style: const TextStyle(fontSize: 16, color: Colors.green)))
+                child: Text("+ $shipping \$",
+                    style: const TextStyle(fontSize: 16)))
           ],
         ),
         const Divider(
@@ -91,7 +91,9 @@ class CartBottomNav extends StatelessWidget {
         ),
         CartBottomPart(
           textButton: "Place Order",
-          onPressed: () {},
+          onPressed: () {
+            controller.goToPlaceOrder(context, discount.toString());
+          },
         ),
         const SizedBox(
           height: 5,

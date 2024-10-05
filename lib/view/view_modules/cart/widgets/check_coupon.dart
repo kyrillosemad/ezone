@@ -14,6 +14,7 @@ class CheckCoupon extends StatelessWidget {
       onTap: () {
         Get.defaultDialog(
             title: "Coupon",
+            titleStyle: const TextStyle(color: AppColor.primaryColor),
             content: Column(
               children: [
                 Container(
@@ -31,7 +32,7 @@ class CheckCoupon extends StatelessWidget {
                         label: Text(
                           "Coupon Name",
                         ),
-                        labelStyle: TextStyle(color: AppColor.primaryColor),
+                        labelStyle: TextStyle(color: Colors.black),
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide:
@@ -47,7 +48,8 @@ class CheckCoupon extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    controller.checkCoupon(controller.couponNameCont.text, context);
+                    controller.checkCoupon(
+                        controller.couponNameCont.text, context);
                     Get.back();
                   },
                   child: Container(

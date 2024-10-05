@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:ezone/controller/favorite/favorite_cont.dart';
 import 'package:ezone/controller/items/items_cont.dart';
 import 'package:ezone/core/classes/status.dart';
 import 'package:ezone/core/constants/api_links.dart';
@@ -53,5 +54,16 @@ class HomePageCont extends GetxController {
   goToItemDetails(ItemsModel itemsModel) {
     Get.delete<ItemDetailsCont>();
     Get.toNamed(AppRoutes().itemDetails, arguments: {"itemsModel": itemsModel});
+  }
+
+  goToFavorite() {
+    Get.delete<FavoriteCont>();
+    Get.toNamed(AppRoutes().favorite);
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    getHomePageData();
   }
 }
