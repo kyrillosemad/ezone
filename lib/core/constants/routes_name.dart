@@ -21,4 +21,9 @@ class AppRoutes {
   final String viewAllAddresses = "viewAllAddresses";
 
   final String checkout = "checkout";
+
+  final String pendingOrders = "pendingOrders";
+
+  final String archiveOrders = "archiveOrders";
+    final String orderDetails = "orderDetails";
 }

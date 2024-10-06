@@ -17,6 +17,9 @@ import 'package:ezone/view/view_modules/items/screens/items_page.dart';
 import 'package:ezone/view/view_modules/home_page/screens/profile_page.dart';
 import 'package:ezone/view/view_modules/home_page/screens/settings_page.dart';
 import 'package:ezone/view/view_modules/on_boarding/screens/on_boarding.dart';
+import 'package:ezone/view/view_modules/orders/screens/archive_orders.dart';
+import 'package:ezone/view/view_modules/orders/screens/orders_details.dart';
+import 'package:ezone/view/view_modules/orders/screens/pending_orders.dart';
 import 'package:flutter/material.dart';
 
 Map<String, Widget Function(BuildContext)> routes = {
@@ -38,4 +41,7 @@ Map<String, Widget Function(BuildContext)> routes = {
   AppRoutes().addNewAddress: (context) => const AddressAddDetails(),
   AppRoutes().viewAllAddresses: (context) => const AddressView(),
   AppRoutes().checkout: (context) => const Checkout(),
+  AppRoutes().archiveOrders: (context) => const OrdersArchiveView(),
+  AppRoutes().pendingOrders: (context) => const OrdersPending(),
+   AppRoutes().orderDetails: (context) => const OrdersDetails(),
 };

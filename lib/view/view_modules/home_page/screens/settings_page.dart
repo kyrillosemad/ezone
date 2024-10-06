@@ -1,3 +1,4 @@
+import 'package:ezone/controller/orders/orders_cont.dart';
 import 'package:ezone/controller/settings/settings_cont.dart';
 import 'package:ezone/core/constants/colors.dart';
 import 'package:ezone/core/constants/images.dart';
@@ -51,6 +52,22 @@ class SettingsPage extends StatelessWidget {
                 },
                 trailing: const Icon(Icons.location_on_outlined),
                 title: const Text("Address"),
+              ),
+              ListTile(
+                onTap: () {
+                  Get.delete<OrdersCont>();
+                  Get.toNamed(AppRoutes().pendingOrders);
+                },
+                trailing: const Icon(Icons.add_shopping_cart),
+                title: const Text("Orders"),
+              ),
+              ListTile(
+                onTap: () {
+                  Get.delete<OrdersCont>();
+                  Get.toNamed(AppRoutes().archiveOrders);
+                },
+                trailing: const Icon(Icons.history),
+                title: const Text("History"),
               ),
               ListTile(
                 onTap: () {},
