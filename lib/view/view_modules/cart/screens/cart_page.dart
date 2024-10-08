@@ -16,118 +16,116 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CartCont controller = Get.put(CartCont());
+
     controller.viewCartData();
-    return SafeArea(
-      child: Scaffold(
-        appBar: const CustomAppBar2(title: "My Cart"),
-        bottomNavigationBar: Obx(() {
-          if (controller.reqStatus == Status.internetFailure) {
-            return Center(
-              child: Lottie.asset("assets/lottie/offline.json", height: 170),
-            );
-          } else if (controller.reqStatus == Status.serverFailure) {
-            return Center(
-              child: Lottie.asset("assets/lottie/server.json", height: 200),
-            );
-          } else if (controller.reqStatus == Status.loading) {
-            return Center(
-              child: Lottie.asset("assets/lottie/cart.json", height: 140),
-            );
-          } else if (controller.reqStatus == Status.success) {
-            return CartBottomNav(
-              discount: controller.discount.value.toString(),
-              controller: controller,
-              price: (controller.totalCartData['totalprice'] != null
-                  ? controller.totalCartData['totalprice'].toStringAsFixed(2)
-                  : '0.00'),
-              shipping: "300",
-              totalPrice: controller.totalCartData['totalprice'] != null
-                  ? "${(((controller.totalCartData['totalprice']) - ((controller.totalCartData['totalprice']) * controller.discount.toDouble() / 100)) + 300).toStringAsFixed(2)}"
-                  : "300",
-            );
-          } else if (controller.reqStatus == Status.empty) {
-            return Center(
-              child: Lottie.asset("assets/lottie/noData.json", height: 200),
-            );
-          } else {
-            return Container();
-          }
-        }),
-        body: Column(
-          children: [
-            Expanded(
-              child: Obx(() {
-                if (controller.reqStatus == Status.internetFailure) {
-                  return Center(
-                    child:
-                        Lottie.asset("assets/lottie/offline.json", height: 170),
-                  );
-                } else if (controller.reqStatus == Status.serverFailure) {
-                  return Center(
-                    child:
-                        Lottie.asset("assets/lottie/server.json", height: 200),
-                  );
-                } else if (controller.reqStatus == Status.loading) {
-                  return Center(
-                    child: Lottie.asset("assets/lottie/cart.json", height: 140),
-                  );
-                } else if (controller.reqStatus == Status.success) {
-                  return Column(
-                    children: [
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      CartTopCard(
-                        message:
-                            "You Have ${controller.totalCartData['totalcount']} Items in Your List",
-                      ),
-                      Expanded(
-                        child: ListView(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(10),
-                              child: ListView.builder(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount: controller.cartItemsData.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  CartModel cartModel = CartModel.fromJson(
-                                      controller.cartItemsData[index]);
-                                  return CartItemsList(
-                                    onAdd: () {
-                                      controller.addToCart(
-                                          cartModel.itemsId, context);
-                                    },
-                                    onRemove: () {
-                                      controller.deleteFromCart(
-                                          cartModel.itemsId, context);
-                                    },
-                                    image: cartModel.itemsImage.toString(),
-                                    name: "${cartModel.itemsName}",
-                                    price:
-                                        "${cartModel.itemsPrice! - (cartModel.itemsPrice! * cartModel.itemsDiscount!.toInt() / 100)}",
-                                    count: "${cartModel.countitems}",
-                                  );
-                                },
-                              ),
+
+    return Scaffold(
+      appBar: const CustomAppBar2(title: "My Cart"),
+      bottomNavigationBar: Obx(() {
+        if (controller.reqStatus == Status.internetFailure) {
+          return Center(
+            child: Lottie.asset("assets/lottie/offline.json", height: 170),
+          );
+        } else if (controller.reqStatus == Status.serverFailure) {
+          return Center(
+            child: Lottie.asset("assets/lottie/server.json", height: 200),
+          );
+        } else if (controller.reqStatus == Status.loading) {
+          return Center(
+            child: Lottie.asset("assets/lottie/cart.json", height: 140),
+          );
+        } else if (controller.reqStatus == Status.success) {
+          return CartBottomNav(
+            discount: controller.discount.value.toString(),
+            controller: controller,
+            price: (controller.totalCartData['totalprice'] != null
+                ? controller.totalCartData['totalprice'].toStringAsFixed(2)
+                : '0.00'),
+            shipping: "300",
+            totalPrice: controller.totalCartData['totalprice'] != null
+                ? "${(((controller.totalCartData['totalprice']) - ((controller.totalCartData['totalprice']) * controller.discount.toDouble() / 100)) + 300).toStringAsFixed(2)}"
+                : "300",
+          );
+        } else if (controller.reqStatus == Status.empty) {
+          return Center(
+            child: Lottie.asset("assets/lottie/noData.json", height: 200),
+          );
+        } else {
+          return Container();
+        }
+      }),
+      body: Column(
+        children: [
+          Expanded(
+            child: Obx(() {
+              if (controller.reqStatus == Status.internetFailure) {
+                return Center(
+                  child:
+                      Lottie.asset("assets/lottie/offline.json", height: 170),
+                );
+              } else if (controller.reqStatus == Status.serverFailure) {
+                return Center(
+                  child: Lottie.asset("assets/lottie/server.json", height: 200),
+                );
+              } else if (controller.reqStatus == Status.loading) {
+                return Center(
+                  child: Lottie.asset("assets/lottie/cart.json", height: 140),
+                );
+              } else if (controller.reqStatus == Status.success) {
+                return Column(
+                  children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    CartTopCard(
+                      message:
+                          "You Have ${controller.totalCartData['totalcount']} Items in Your List",
+                    ),
+                    Expanded(
+                      child: ListView(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(10),
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: controller.cartItemsData.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                CartModel cartModel = CartModel.fromJson(
+                                    controller.cartItemsData[index]);
+                                return CartItemsList(
+                                  onAdd: () {
+                                    controller.addToCart(
+                                        cartModel.itemsId, context);
+                                  },
+                                  onRemove: () {
+                                    controller.deleteFromCart(
+                                        cartModel.itemsId, context);
+                                  },
+                                  image: cartModel.itemsImage.toString(),
+                                  name: "${cartModel.itemsName}",
+                                  price:
+                                      "${cartModel.itemsPrice! - (cartModel.itemsPrice! * cartModel.itemsDiscount!.toInt() / 100)}",
+                                  count: "${cartModel.countitems}",
+                                );
+                              },
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
-                  );
-                } else if (controller.reqStatus == Status.empty) {
-                  return Center(
-                    child:
-                        Lottie.asset("assets/lottie/noData.json", height: 200),
-                  );
-                } else {
-                  return Container();
-                }
-              }),
-            )
-          ],
-        ),
+                    ),
+                  ],
+                );
+              } else if (controller.reqStatus == Status.empty) {
+                return Center(
+                  child: Lottie.asset("assets/lottie/noData.json", height: 200),
+                );
+              } else {
+                return Container();
+              }
+            }),
+          )
+        ],
       ),
     );
   }

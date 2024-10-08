@@ -1,6 +1,5 @@
 import 'package:ezone/controller/homepage/bottom_app_bar_cont.dart';
 import 'package:ezone/core/constants/colors.dart';
-import 'package:ezone/core/constants/routes_name.dart';
 import 'package:ezone/core/functions/app_exit_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,13 +20,6 @@ class _BottomNavState extends State<BottomNav> {
     return WillPopScope(
       onWillPop: appExitAlert,
       child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-            backgroundColor: AppColor.primaryColor,
-            onPressed: () {
-              Get.toNamed(AppRoutes().cart);
-            },
-            child: const Icon(Icons.shopping_basket_outlined)),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         body: PersistentTabView(
           context,
           controller: controller.controller,

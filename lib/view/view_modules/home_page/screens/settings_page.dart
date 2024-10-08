@@ -36,16 +36,11 @@ class SettingsPage extends StatelessWidget {
                     backgroundImage: AssetImage(AppImages().logo)),
               )),
         ]),
-        const SizedBox(height: 80),
+        const SizedBox(height: 100),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Card(
             child: Column(mainAxisSize: MainAxisSize.min, children: [
-              ListTile(
-                // onTap: () {},
-                trailing: Switch(onChanged: (val) {}, value: true),
-                title: const Text("Disable Notifications"),
-              ),
               ListTile(
                 onTap: () {
                   Get.toNamed(AppRoutes().viewAllAddresses);
@@ -70,12 +65,42 @@ class SettingsPage extends StatelessWidget {
                 title: const Text("History"),
               ),
               ListTile(
-                onTap: () {},
+                onTap: () {
+                  Get.defaultDialog(
+                      title: "Kyrillos Emad",
+                      content: const Column(
+                        children: [
+                          Text(
+                            "Flutter Developer",
+                            style: TextStyle(fontSize: 15),
+                          ),
+                          SizedBox(
+                            height: 2,
+                          ),
+                          Text(
+                            "Tel:01147910957",
+                            style: TextStyle(fontSize: 15),
+                          ),
+                          SizedBox(
+                            height: 2,
+                          ),
+                          Text(
+                            "Email:kyrillos243648@gmail.com",
+                            style: TextStyle(fontSize: 15),
+                          ),
+                          SizedBox(
+                            height: 2,
+                          ),
+                        ],
+                      ));
+                },
                 trailing: const Icon(Icons.help_outline_rounded),
                 title: const Text("About us"),
               ),
               ListTile(
-                onTap: () {},
+                onTap: () {
+                  controller.contactUs();
+                },
                 trailing: const Icon(Icons.phone_callback_outlined),
                 title: const Text("Contact us"),
               ),

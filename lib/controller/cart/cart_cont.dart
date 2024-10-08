@@ -1,5 +1,4 @@
 // ignore_for_file: use_build_context_synchronously
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dartz/dartz.dart';
 import 'package:ezone/controller/checkout/checkout_cont.dart';
 import 'package:ezone/core/classes/status.dart';
@@ -74,6 +73,7 @@ class CartCont extends GetxController {
       reqStatus.value = Status.success;
       totalItemCount.value = r['data'];
     });
+    update();
   }
 
   viewCartData() async {
@@ -110,15 +110,6 @@ class CartCont extends GetxController {
       if (r['status'] == 'success') {
         couponId = r['data']['coupon_id'].toString();
         discount.value = r['data']['coupon_discount'];
-        AwesomeDialog(
-          animType: AnimType.scale,
-          dialogType: DialogType.success,
-          title: 'Success',
-          desc: "The Discount Is Applied",
-          btnOkColor: Colors.green,
-          btnOkOnPress: () {},
-          context: context,
-        ).show();
       } else {
         couponId = null;
         errorDialog("NoT Valid Coupon", context);
@@ -127,7 +118,7 @@ class CartCont extends GetxController {
     couponNameCont.clear();
   }
 
-  goToPlaceOrder(BuildContext context,String couponDiscount) {
+  goToPlaceOrder(BuildContext context, String couponDiscount) {
     if (cartItemsData.isEmpty) {
       errorDialog("The Cart Is Empty", context);
     } else {
@@ -136,7 +127,7 @@ class CartCont extends GetxController {
         "couponId": couponId ?? "0",
         "orderPrice": totalCartData['totalprice'].toString(),
         "shipping": "300",
-        "couponDiscount":couponDiscount.toString()
+        "couponDiscount": couponDiscount.toString()
       });
     }
   }

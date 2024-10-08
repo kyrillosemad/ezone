@@ -59,6 +59,11 @@ class ItemDetails extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Obx(() {
+                final originalPrice =
+                    itemDetailsController.itemsModel.itemsPrice ?? 0.0;
+                final discount =
+                    (itemDetailsController.itemsModel.itemsDiscount ?? 0)
+                        .toInt();
                 return ItemPriceAndCount(
                   onAdd: () {
                     cartController.addToCart(
@@ -70,8 +75,7 @@ class ItemDetails extends StatelessWidget {
                           itemDetailsController.itemsModel.itemsId, context);
                     }
                   },
-                  price:
-                      "${itemDetailsController.itemsModel.itemsPriceDiscount}",
+                  price: "${originalPrice - (originalPrice * discount / 100)}",
                   count: cartController.reqStatus.value == Status.loading
                       ? ""
                       : "${cartController.totalItemCount}",
@@ -87,4 +91,3 @@ class ItemDetails extends StatelessWidget {
         ]));
   }
 }
-   

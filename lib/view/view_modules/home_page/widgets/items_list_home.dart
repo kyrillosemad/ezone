@@ -39,7 +39,6 @@ class ItemsHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-      
         homePageCont.goToItemDetails(itemsModel);
       },
       child: Stack(

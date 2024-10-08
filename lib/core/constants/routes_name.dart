@@ -9,7 +9,7 @@ class AppRoutes {
 
   final String bottomAppBar = "bottomAppBar";
   final String homePage = "homePage";
-  final String profile = "profile";
+  final String offers = "offers";
   final String settings = "settings";
   final String favorite = "favorite";
   final String items = "items";

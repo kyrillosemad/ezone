@@ -14,7 +14,7 @@ import 'package:ezone/view/view_modules/home_page/screens/favorite_page.dart';
 import 'package:ezone/view/view_modules/home_page/screens/home_page.dart';
 import 'package:ezone/view/view_modules/item_details/screens/item_details.dart';
 import 'package:ezone/view/view_modules/items/screens/items_page.dart';
-import 'package:ezone/view/view_modules/home_page/screens/profile_page.dart';
+import 'package:ezone/view/view_modules/home_page/screens/offers_page.dart';
 import 'package:ezone/view/view_modules/home_page/screens/settings_page.dart';
 import 'package:ezone/view/view_modules/on_boarding/screens/on_boarding.dart';
 import 'package:ezone/view/view_modules/orders/screens/archive_orders.dart';
@@ -33,7 +33,7 @@ Map<String, Widget Function(BuildContext)> routes = {
   AppRoutes().bottomAppBar: (context) => const BottomNav(),
   AppRoutes().homePage: (context) => const HomePage(),
   AppRoutes().settings: (context) => const SettingsPage(),
-  AppRoutes().profile: (context) => const ProfilePage(),
+  AppRoutes().offers: (context) => const OffersPage(),
   AppRoutes().favorite: (context) => const FavoritePage(),
   AppRoutes().items: (context) => const ItemsPage(),
   AppRoutes().itemDetails: (context) => const ItemDetails(),
@@ -43,5 +43,5 @@ Map<String, Widget Function(BuildContext)> routes = {
   AppRoutes().checkout: (context) => const Checkout(),
   AppRoutes().archiveOrders: (context) => const OrdersArchiveView(),
   AppRoutes().pendingOrders: (context) => const OrdersPending(),
-   AppRoutes().orderDetails: (context) => const OrdersDetails(),
+  AppRoutes().orderDetails: (context) => const OrdersDetails(),
 };

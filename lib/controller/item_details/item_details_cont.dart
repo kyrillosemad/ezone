@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 class ItemDetailsCont extends GetxController {
   ItemsModel itemsModel = Get.arguments['itemsModel'];
+  
   goToCart() {
     Get.delete<CartCont>();
     Get.toNamed(AppRoutes().cart);
@@ -15,4 +16,5 @@ class ItemDetailsCont extends GetxController {
     {"name": "yellow", "id": 2, "active": '0'},
     {"name": "black", "id": 3, "active": '1'}
   ];
+
 }
