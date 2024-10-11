@@ -18,6 +18,10 @@ class BottomNavCont extends GetxController {
     ];
   }
 
+  onTap(index) {
+    controller = PersistentTabController(initialIndex: index);
+  }
+
   List<PersistentBottomNavBarItem> navBarsItems() {
     return [
       PersistentBottomNavBarItem(

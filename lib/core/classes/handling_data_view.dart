@@ -13,7 +13,6 @@ class HandlingDataView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(reqStatus);
     if (reqStatus == Status.internetFailure) {
       return Center(
         child: Lottie.asset("assets/lottie/offline.json", height: 170),

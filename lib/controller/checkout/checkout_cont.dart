@@ -26,7 +26,7 @@ class CheckoutCont extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    getAllAddresses(); // Call this in onInit, not in build
+    getAllAddresses(); 
   }
 
   choosePaymentMethod(String payment) {

@@ -1,15 +1,17 @@
 import 'package:ezone/controller/orders/orders_cont.dart';
 import 'package:ezone/core/constants/colors.dart';
+import 'package:ezone/view/view_modules/orders/widgets/order_raring.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jiffy/jiffy.dart';
-
 import '../../../../model/orders/orders_model.dart';
 
 class CardOrdersListArchive extends GetView<OrdersCont> {
   final OrdersModel ordersModel;
-
-  const CardOrdersListArchive({Key? key, required this.ordersModel})
+  @override
+  final OrdersCont controller;
+  const CardOrdersListArchive(
+      {Key? key, required this.ordersModel, required this.controller})
       : super(key: key);
 
   @override
@@ -50,6 +52,15 @@ class CardOrdersListArchive extends GetView<OrdersCont> {
                       style: const TextStyle(
                           color: AppColor.primaryColor,
                           fontWeight: FontWeight.bold)),
+                  const Spacer(),
+                  ordersModel.ordersRating == 0
+                      ? OrderRating(
+                          controller: controller, ordersModel: ordersModel)
+                      : const Icon(
+                          Icons.done,
+                          size: 30,
+                          color: AppColor.primaryColor,
+                        ),
                   const Spacer(),
                   MaterialButton(
                     onPressed: () {

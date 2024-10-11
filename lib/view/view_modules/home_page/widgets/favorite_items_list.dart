@@ -3,16 +3,20 @@ import 'package:ezone/controller/favorite/favorite_cont.dart';
 import 'package:ezone/core/constants/api_links.dart';
 import 'package:ezone/core/constants/colors.dart';
 import 'package:ezone/model/favorite/favorite_model.dart';
+import 'package:ezone/model/items/items_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 class CustomListFavoriteItems extends GetView<FavoriteCont> {
+  final ItemsModel itemsModel;
   final FavoriteModel favoriteModel;
   final int index;
-
+  final FavoriteCont favoriteCont;
   const CustomListFavoriteItems({
     Key? key,
+    required this.favoriteCont,
+    required this.itemsModel,
     required this.favoriteModel,
     required this.index,
   }) : super(key: key);
@@ -21,7 +25,7 @@ class CustomListFavoriteItems extends GetView<FavoriteCont> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        
+        controller.goToItemDetails(itemsModel);
       },
       child: Card(
         shape: RoundedRectangleBorder(
@@ -35,9 +39,9 @@ class CustomListFavoriteItems extends GetView<FavoriteCont> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Hero(
-                tag: "favoriteItem_${favoriteModel.itemsId}",
+                tag: "favoriteItem_${itemsModel.itemsId}",
                 child: CachedNetworkImage(
-                  imageUrl: "${AppLink.imagesItems}/${favoriteModel.itemsImage}",
+                  imageUrl: "${AppLink.imagesItems}/${itemsModel.itemsImage}",
                   height: 100,
                   fit: BoxFit.cover,
                   placeholder: (context, url) =>
@@ -48,7 +52,7 @@ class CustomListFavoriteItems extends GetView<FavoriteCont> {
               ),
               const SizedBox(height: 10),
               Text(
-                favoriteModel.itemsName!,
+                itemsModel.itemsName!,
                 style: const TextStyle(
                   color: AppColor.black,
                   fontSize: 16,
@@ -74,7 +78,7 @@ class CustomListFavoriteItems extends GetView<FavoriteCont> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "${favoriteModel.itemsPrice} \$",
+                    "${itemsModel.itemsPrice} \$",
                     style: const TextStyle(
                       color: AppColor.primaryColor,
                       fontSize: 16,

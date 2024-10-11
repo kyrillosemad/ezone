@@ -2,7 +2,6 @@ import 'package:ezone/controller/cart/cart_cont.dart';
 import 'package:ezone/controller/item_details/item_details_cont.dart';
 import 'package:ezone/core/classes/status.dart';
 import 'package:ezone/view/view_modules/item_details/widgets/item_price_and_count.dart';
-import 'package:ezone/view/view_modules/item_details/widgets/sub_item_list.dart';
 import 'package:ezone/view/view_modules/item_details/widgets/top_Item_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -84,8 +83,6 @@ class ItemDetails extends StatelessWidget {
               const SizedBox(height: 25),
               Text("${itemDetailsController.itemsModel.itemsDesc}",
                   style: Theme.of(context).textTheme.bodyLarge),
-              const SizedBox(height: 40),
-              const SubItemList()
             ]),
           )
         ]));

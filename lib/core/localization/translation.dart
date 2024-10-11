@@ -24,8 +24,7 @@ class MyTranslation extends Translations {
           "3": "EN",
           "4": "Continue",
           "5": "Choose Product",
-          "6":
-              "We Have a 100k Product , Choose \n Your Product From  Our \n E-commerce Shop",
+          "6": "We Have a 100k Product \n, Choose Your Product",
           "7": "Easy And Safe Payment",
           "8": "You can pay in cash \n or through payment gateways",
           "9": "Track Your Order",

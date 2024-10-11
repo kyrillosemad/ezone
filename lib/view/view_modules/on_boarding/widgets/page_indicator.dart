@@ -17,12 +17,12 @@ class PageIndicator extends StatelessWidget {
         effect: const ScrollingDotsEffect(
             activeDotColor: AppColor.secondColor,
             activeStrokeWidth: 2.6,
-            activeDotScale: 1.4,
+            activeDotScale: 1.5,
             maxVisibleDots: 5,
             radius: 8,
             spacing: 10,
-            dotHeight: 12,
-            dotWidth: 12,
+            dotHeight: 7,
+            dotWidth: 25,
             dotColor: AppColor.grey));
   }
 }

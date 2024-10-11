@@ -131,4 +131,5 @@ class CartCont extends GetxController {
       });
     }
   }
+
 }

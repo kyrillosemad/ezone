@@ -87,4 +87,10 @@ class AddressCont extends GetxController {
     city.clear();
     street.clear();
   }
+
+  @override
+  void onInit() {
+    super.onInit();
+    getAllAddresses();
+  }
 }

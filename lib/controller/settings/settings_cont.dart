@@ -1,11 +1,15 @@
-import 'dart:developer';
+import 'package:ezone/controller/homepage/home_page_cont.dart';
+import 'package:ezone/core/constants/routes_name.dart';
+import 'package:ezone/core/services/services.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingsCont extends GetxController {
-  Service service = Get.put(Service());
+  Services services = Get.put(Services());
   logout() {
-    print("hi");
+    services.sharedPref!.clear();
+    Get.delete<HomePageCont>();
+    Get.offAllNamed(AppRoutes().login);
   }
 
   contactUs() {

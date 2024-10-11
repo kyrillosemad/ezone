@@ -8,6 +8,7 @@ import 'package:ezone/view/shared_widgets/custom_appbar.dart';
 import 'package:ezone/view/view_modules/home_page/widgets/custom_card_home.dart';
 import 'package:ezone/view/view_modules/home_page/widgets/custom_title_home.dart';
 import 'package:ezone/view/view_modules/home_page/widgets/items_list_home.dart';
+import 'package:ezone/view/view_modules/home_page/widgets/top_selling_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
@@ -78,11 +79,26 @@ class HomePage extends StatelessWidget {
                               body: "Cashback 20%",
                             ),
                             const CustomTitleHome(title: "Categories"),
+                            const SizedBox(
+                              height: 10,
+                            ),
                             const ListCategoriesHome(),
+                            const SizedBox(
+                              height: 10,
+                            ),
                             const CustomTitleHome(title: "Products for You"),
+                            const SizedBox(
+                              height: 10,
+                            ),
                             ListItemsHome(homePageCont: controller),
-                            const CustomTitleHome(title: "Offers"),
-                            ListItemsHome(homePageCont: controller),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            const CustomTitleHome(title: "Top Selling"),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            TopSellingList(homePageCont: controller),
                           ],
                         )
                       : Search(

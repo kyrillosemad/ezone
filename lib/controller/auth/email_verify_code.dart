@@ -19,7 +19,7 @@ class EmailVerifyCodeCont extends GetxController {
     await completeSignUp(verifyCode);
     if (reqStatus.value == Status.success) {
       if (data['status'] == "success") {
-        Get.offAllNamed(AppRoutes().homePage);
+        Get.offAllNamed(AppRoutes().login);
         Get.delete<SignUpCont>();
         Get.delete<EmailVerifyCodeCont>();
       } else {

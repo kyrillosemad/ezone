@@ -25,8 +25,15 @@ class OffersCont extends GetxController {
       }
     });
   }
-    goToItemDetails(ItemsModel itemsModel) {
+
+  goToItemDetails(ItemsModel itemsModel) {
     Get.delete<ItemDetailsCont>();
     Get.toNamed(AppRoutes().itemDetails, arguments: {"itemsModel": itemsModel});
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    getOffersData();
   }
 }

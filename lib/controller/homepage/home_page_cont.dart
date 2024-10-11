@@ -15,7 +15,7 @@ class HomePageCont extends GetxController {
   Rx<Status> reqStatus = Status.initial.obs;
   List categories = [];
   List items = [];
-
+  List topSelling = [];
   bool isSearch = false;
 
   Services services = Get.find<Services>();
@@ -28,6 +28,7 @@ class HomePageCont extends GetxController {
     reqStatus.value = Status.loading;
     categories = [];
     items = [];
+    topSelling = [];
 
     Either<Status, Map> response = await homePageDataReq(AppLink.homepage, {});
 
@@ -39,6 +40,7 @@ class HomePageCont extends GetxController {
       reqStatus.value = Status.success;
       items.addAll(r['items']['data']);
       categories.addAll(r['categories']['data']);
+      topSelling.addAll(r['topSelling']['data']);
     });
     update();
   }

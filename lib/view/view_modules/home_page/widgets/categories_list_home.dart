@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, deprecated_member_use
 import 'package:ezone/controller/homepage/home_page_cont.dart';
 import 'package:ezone/core/constants/api_links.dart';
 import 'package:ezone/core/constants/colors.dart';

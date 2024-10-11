@@ -50,4 +50,10 @@ class FavoriteCont extends GetxController {
     Get.delete<ItemDetailsCont>();
     Get.toNamed(AppRoutes().itemDetails, arguments: {"itemsModel": itemsModel});
   }
+
+  @override
+  void onInit() {
+    super.onInit();
+    getAllFavorite();
+  }
 }

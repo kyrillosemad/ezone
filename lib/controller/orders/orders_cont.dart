@@ -4,7 +4,10 @@ import 'package:ezone/core/classes/status.dart';
 import 'package:ezone/core/constants/api_links.dart';
 import 'package:ezone/core/constants/routes_name.dart';
 import 'package:ezone/core/services/services.dart';
+import 'package:ezone/data/remote/orders/order_rating_req.dart';
 import 'package:ezone/data/remote/orders/orders_req.dart';
+import 'package:ezone/view/shared_widgets/error_dialog.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class OrdersCont extends GetxController {
@@ -72,6 +75,26 @@ class OrdersCont extends GetxController {
     } else {
       return "Completed";
     }
+  }
+
+  orderRating(id, rating, comment, BuildContext context) async {
+    Either<Status, Map> response = await orderRatingReq(AppLink.rating, {
+      "id": id.toString(),
+      "rating": rating.toString(),
+      "comment": comment.toString(),
+    });
+
+    response.fold((l) {
+      errorDialog("There's Something Wrong", context);
+    }, (r) {
+      if (r['status'] == "success") {
+        Get.back();
+        Get.snackbar("Success", "The Order Is rated Successfully",
+            duration: const Duration(milliseconds: 1000));
+      } else {
+        errorDialog("There's Something Wrong", context);
+      }
+    });
   }
 
   goToOrderDetails(orderId, orderTotalPrice, orderAddressName, orderAddressCity,

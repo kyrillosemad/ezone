@@ -1,5 +1,6 @@
 import 'package:ezone/controller/offers/offers_cont.dart';
 import 'package:ezone/core/classes/handling_data_view.dart';
+import 'package:ezone/model/items/items_model.dart';
 import 'package:ezone/model/offers/offers_model.dart';
 import 'package:ezone/view/shared_widgets/custom_app_bar.dart';
 import 'package:ezone/view/view_modules/home_page/widgets/offer_items_list.dart';
@@ -13,7 +14,6 @@ class OffersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     OffersCont controller = Get.put(OffersCont());
-    controller.getOffersData();
     return Scaffold(
       appBar: const CustomAppBar2(title: "Offers"),
       body: Container(
@@ -21,7 +21,6 @@ class OffersPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 20),
             Expanded(child: Obx(() {
               return HandlingDataView(
                 reqStatus: controller.reqStatus.value,
@@ -44,6 +43,9 @@ class OffersPage extends StatelessWidget {
                         ),
                         itemBuilder: (context, index) {
                           return CustomListOffersItems(
+                            controller1: controller,
+                            itemsModel: ItemsModel.fromJson(
+                                controller.offersData[index]),
                             offersModel: OffersModel.fromJson(
                                 controller.offersData[index]),
                           );

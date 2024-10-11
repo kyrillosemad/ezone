@@ -24,7 +24,7 @@ class OrdersArchiveView extends StatelessWidget {
                     itemBuilder: ((context, index) {
                       OrdersModel ordersModel =
                           OrdersModel.fromJson(controller.orders[index]);
-                      return CardOrdersListArchive(ordersModel: ordersModel);
+                      return CardOrdersListArchive(ordersModel: ordersModel,controller: controller,);
                     }),
                   )))),
         ));

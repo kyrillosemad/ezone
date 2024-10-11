@@ -29,7 +29,7 @@ class ItemsCont extends GetxController {
 
     Either<Status, Map> response = await itemsReq(AppLink.items, {
       "id": id.toString(),
-      "usersid": "30",
+      "usersid": services.sharedPref!.getString("userId"),
     });
 
     response.fold((l) {
@@ -44,7 +44,6 @@ class ItemsCont extends GetxController {
         items.clear();
       }
     });
-   
   }
 
   Future<void> toggleFavorite(itemsId, index) async {

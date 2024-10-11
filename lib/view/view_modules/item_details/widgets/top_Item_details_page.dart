@@ -1,5 +1,4 @@
-// ignore_for_file: must_be_immutable
-
+// ignore_for_file: file_names
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ezone/core/constants/api_links.dart';
 import 'package:ezone/core/constants/colors.dart';
@@ -8,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
+// ignore: must_be_immutable
 class TopItemDetailsPage extends StatelessWidget {
   ItemsModel itemsModel = ItemsModel();
   TopItemDetailsPage({super.key, required this.itemsModel});

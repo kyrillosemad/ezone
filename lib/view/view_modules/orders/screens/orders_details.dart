@@ -94,16 +94,14 @@ class OrdersDetails extends StatelessWidget {
                               fontSize: 22, color: AppColor.primaryColor),
                         ),
                         Card(
-                          child: Container(
-                              child: ListTile(
-                            title: const Text("Shipping Address",
-                                style: TextStyle(
-                                    color: AppColor.primaryColor,
-                                    fontWeight: FontWeight.bold)),
-                            subtitle: Text(
-                                "${controller.orderAddressCity} , ${controller.orderAddressStreet}"),
-                          )),
-                        ),
+                            child: ListTile(
+                          title: const Text("Shipping Address",
+                              style: TextStyle(
+                                  color: AppColor.primaryColor,
+                                  fontWeight: FontWeight.bold)),
+                          subtitle: Text(
+                              "${controller.orderAddressCity} , ${controller.orderAddressStreet}"),
+                        )),
                       ],
                     )
                 ])))),

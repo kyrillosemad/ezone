@@ -1,6 +1,7 @@
 import 'package:ezone/controller/favorite/favorite_cont.dart';
 import 'package:ezone/core/classes/handling_data_view.dart';
 import 'package:ezone/model/favorite/favorite_model.dart';
+import 'package:ezone/model/items/items_model.dart';
 import 'package:ezone/view/shared_widgets/custom_app_bar.dart';
 import 'package:ezone/view/view_modules/home_page/widgets/favorite_items_list.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,6 @@ class FavoritePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FavoriteCont controller = Get.put(FavoriteCont(), permanent: false);
-    controller.getAllFavorite();
     return Scaffold(
       appBar: const CustomAppBar2(title: "Favorite"),
       body: Container(
@@ -21,7 +21,6 @@ class FavoritePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 20),
             Expanded(child: Obx(() {
               return HandlingDataView(
                 reqStatus: controller.reqStatus.value,
@@ -45,8 +44,11 @@ class FavoritePage extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return CustomListFavoriteItems(
                             index: index,
+                            favoriteCont: controller,
                             favoriteModel: FavoriteModel.fromJson(
                                 controller.favorite[index]),
+                            itemsModel:
+                                ItemsModel.fromJson(controller.favorite[index]),
                           );
                         },
                       ),

@@ -16,9 +16,7 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CartCont controller = Get.put(CartCont());
-
     controller.viewCartData();
-
     return Scaffold(
       appBar: const CustomAppBar2(title: "My Cart"),
       bottomNavigationBar: Obx(() {

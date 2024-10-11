@@ -10,6 +10,8 @@ class OrdersModel {
   int? ordersCoupon;
   int? ordersStatus;
   String? ordersDatetime;
+  int? ordersRating;
+  String? ordersNoterating;
   int? addressId;
   int? addressUsersid;
   String? addressName;
@@ -18,26 +20,27 @@ class OrdersModel {
   int? addressLat;
   int? addressLong;
 
-  OrdersModel({
-    this.ordersId,
-    this.ordersUsersid,
-    this.ordersAddress,
-    this.ordersType,
-    this.ordersPaymentmethod,
-    this.ordersPricedelivery,
-    this.ordersPrice,
-    this.ordersTotalprice,
-    this.ordersCoupon,
-    this.ordersStatus,
-    this.ordersDatetime,
-    this.addressId,
-    this.addressUsersid,
-    this.addressName,
-    this.addressCity,
-    this.addressStreet,
-    this.addressLat,
-    this.addressLong,
-  });
+  OrdersModel(
+      {this.ordersId,
+      this.ordersUsersid,
+      this.ordersAddress,
+      this.ordersType,
+      this.ordersPaymentmethod,
+      this.ordersPricedelivery,
+      this.ordersPrice,
+      this.ordersTotalprice,
+      this.ordersCoupon,
+      this.ordersStatus,
+      this.ordersDatetime,
+      this.ordersRating,
+      this.ordersNoterating,
+      this.addressId,
+      this.addressUsersid,
+      this.addressName,
+      this.addressCity,
+      this.addressStreet,
+      this.addressLat,
+      this.addressLong});
 
   OrdersModel.fromJson(Map<String, dynamic> json) {
     ordersId = json['orders_id'];
@@ -51,6 +54,8 @@ class OrdersModel {
     ordersCoupon = json['orders_coupon'];
     ordersStatus = json['orders_status'];
     ordersDatetime = json['orders_datetime'];
+    ordersRating = json['orders_rating'];
+    ordersNoterating = json['orders_noterating'];
     addressId = json['address_id'];
     addressUsersid = json['address_usersid'];
     addressName = json['address_name'];
@@ -73,6 +78,8 @@ class OrdersModel {
     data['orders_coupon'] = ordersCoupon;
     data['orders_status'] = ordersStatus;
     data['orders_datetime'] = ordersDatetime;
+    data['orders_rating'] = ordersRating;
+    data['orders_noterating'] = ordersNoterating;
     data['address_id'] = addressId;
     data['address_usersid'] = addressUsersid;
     data['address_name'] = addressName;

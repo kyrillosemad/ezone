@@ -23,20 +23,16 @@ class LoginCont extends GetxController {
       await loginFun();
       if (reqStatus.value == Status.success) {
         if (data["status"] == "success") {
-          if (data['status']['users_approve'] == "1") {
-            Get.offAllNamed(AppRoutes().homePage);
-            Get.delete<LoginCont>();
-            services.sharedPref!
-                .setString("userId", data["data"]['user_id'].toString());
-            services.sharedPref!
-                .setString("userName", data["data"]['users_name'].toString());
-            services.sharedPref!
-                .setString("userEmail", data["data"]['users_email'].toString());
-            services.sharedPref!
-                .setString("userPhone", data["data"]['users_phone'].toString());
-          } else {
-            Get.toNamed(AppRoutes().emailVerifyCode);
-          }
+          Get.offAllNamed(AppRoutes().bottomAppBar);
+          Get.delete<LoginCont>();
+          services.sharedPref!
+              .setString("userId", data["data"]['user_id'].toString());
+          services.sharedPref!
+              .setString("userName", data["data"]['users_name'].toString());
+          services.sharedPref!
+              .setString("userEmail", data["data"]['users_email'].toString());
+          services.sharedPref!
+              .setString("userPhone", data["data"]['users_phone'].toString());
         } else {
           errorDialog("Wrong Email Or Password !", context);
         }

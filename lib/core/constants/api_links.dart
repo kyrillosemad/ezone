@@ -1,7 +1,7 @@
 class AppLink {
-  static const String server = "http://192.168.132.1/ezone";
+  static const String server = "http://192.168.1.9/ezone";
 
-  static const String imagesStatic = "http://192.168.132.1/ezone/upload";
+  static const String imagesStatic = "http://192.168.1.9/ezone/upload";
 //========================== Image ============================
   static const String imagesCategories = "$imagesStatic/categories";
   static const String imagesItems = "$imagesStatic/items";
@@ -29,8 +29,11 @@ class AppLink {
 // Home
 
   static const String homepage = "$server/home.php";
+  // rating
 
-//offers 
+  static const String rating = "$server/rating.php";
+
+//offers
   static const String offers = "$server/offers.php";
 
 // items

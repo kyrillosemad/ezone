@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:ezone/controller/orders/orders_cont.dart';
 import 'package:ezone/core/constants/colors.dart';
 import 'package:ezone/model/orders/orders_model.dart';

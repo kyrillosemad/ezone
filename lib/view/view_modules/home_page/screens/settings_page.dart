@@ -36,84 +36,89 @@ class SettingsPage extends StatelessWidget {
                     backgroundImage: AssetImage(AppImages().logo)),
               )),
         ]),
-        const SizedBox(height: 100),
+        const SizedBox(height: 90),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Card(
-            child: Column(mainAxisSize: MainAxisSize.min, children: [
-              ListTile(
-                onTap: () {
-                  Get.toNamed(AppRoutes().viewAllAddresses);
-                },
-                trailing: const Icon(Icons.location_on_outlined),
-                title: const Text("Address"),
-              ),
-              ListTile(
-                onTap: () {
-                  Get.delete<OrdersCont>();
-                  Get.toNamed(AppRoutes().pendingOrders);
-                },
-                trailing: const Icon(Icons.add_shopping_cart),
-                title: const Text("Orders"),
-              ),
-              ListTile(
-                onTap: () {
-                  Get.delete<OrdersCont>();
-                  Get.toNamed(AppRoutes().archiveOrders);
-                },
-                trailing: const Icon(Icons.history),
-                title: const Text("History"),
-              ),
-              ListTile(
-                onTap: () {
-                  Get.defaultDialog(
-                      title: "Kyrillos Emad",
-                      content: const Column(
-                        children: [
-                          Text(
-                            "Flutter Developer",
-                            style: TextStyle(fontSize: 15),
-                          ),
-                          SizedBox(
-                            height: 2,
-                          ),
-                          Text(
-                            "Tel:01147910957",
-                            style: TextStyle(fontSize: 15),
-                          ),
-                          SizedBox(
-                            height: 2,
-                          ),
-                          Text(
-                            "Email:kyrillos243648@gmail.com",
-                            style: TextStyle(fontSize: 15),
-                          ),
-                          SizedBox(
-                            height: 2,
-                          ),
-                        ],
-                      ));
-                },
-                trailing: const Icon(Icons.help_outline_rounded),
-                title: const Text("About us"),
-              ),
-              ListTile(
-                onTap: () {
-                  controller.contactUs();
-                },
-                trailing: const Icon(Icons.phone_callback_outlined),
-                title: const Text("Contact us"),
-              ),
-              ListTile(
-                onTap: () {
-                  controller.logout();
-                },
-                title: const Text("Logout"),
-                trailing: const Icon(Icons.exit_to_app),
-              ),
-            ]),
-          ),
-        )
+          child: Column(mainAxisSize: MainAxisSize.min, children: [
+            ListTile(
+              onTap: () {
+                Get.toNamed(AppRoutes().viewAllAddresses);
+              },
+              trailing: const Icon(Icons.location_on_outlined),
+              title: const Text("Address"),
+            ),
+            ListTile(
+              onTap: () {
+                Get.delete<OrdersCont>();
+                Get.toNamed(AppRoutes().pendingOrders);
+              },
+              trailing: const Icon(Icons.shopping_bag_outlined),
+              title: const Text("Orders"),
+            ),
+            ListTile(
+              onTap: () {
+                Get.toNamed(AppRoutes().cart);
+              },
+              trailing: const Icon(Icons.shopping_cart_outlined),
+              title: const Text("Cart"),
+            ),
+            ListTile(
+              onTap: () {
+                Get.delete<OrdersCont>();
+                Get.toNamed(AppRoutes().archiveOrders);
+              },
+              trailing: const Icon(Icons.history),
+              title: const Text("History"),
+            ),
+            ListTile(
+              onTap: () {
+                Get.defaultDialog(
+                    title: "Kyrillos Emad",
+                    content: const Column(
+                      children: [
+                        Text(
+                          "Flutter Developer",
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        SizedBox(
+                          height: 2,
+                        ),
+                        Text(
+                          "Tel:01147910957",
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        SizedBox(
+                          height: 2,
+                        ),
+                        Text(
+                          "Email:kyrillos243648@gmail.com",
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        SizedBox(
+                          height: 2,
+                        ),
+                      ],
+                    ));
+              },
+              trailing: const Icon(Icons.help_outline_rounded),
+              title: const Text("About us"),
+            ),
+            ListTile(
+              onTap: () {
+                controller.contactUs();
+              },
+              trailing: const Icon(Icons.phone_callback_outlined),
+              title: const Text("Contact us"),
+            ),
+            ListTile(
+              onTap: () {
+                controller.logout();
+              },
+              title: const Text("Logout"),
+              trailing: const Icon(Icons.exit_to_app),
+            ),
+          ]),
+        ),
       ],
     );
   }
