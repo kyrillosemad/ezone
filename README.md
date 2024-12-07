@@ -67,8 +67,6 @@ Analytics & Reports: Admin access to view sales reports, customer behavior, and 
 <img src="https://github.com/user-attachments/assets/3c849c5d-39c3-4ade-96ea-1964002c7d68" alt="Screenshot" width="250"/>
 <img src="https://github.com/user-attachments/assets/2d986d2c-d300-4b5f-b989-5f8682f2e223" alt="Screenshot" width="250"/>
 <img src="https://github.com/user-attachments/assets/66f52ea0-8d73-4457-a1c3-d815cf7b2878" alt="Screenshot" width="250"/>
-<img src="https://github.com/user-attachments/assets/b42b7109-4fbc-41ea-9657-481f7489e5d4" alt="Screenshot" width="250"/>
-
 
 
 
