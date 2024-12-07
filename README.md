@@ -50,19 +50,23 @@ Responsive design: Optimized for both mobile and tablet screens.
 Push notifications: To notify users of discounts, new products, and order updates.
 Analytics & Reports: Admin access to view sales reports, customer behavior, and product performance (optional for future features).
 
-<img src="https://github.com/user-attachments/assets/7bf66805-4086-4b6a-8122-216319edfedf" alt="Screenshot" width="250"/>
-<img src="https://github.com/user-attachments/assets/082c5b34-5990-4553-bede-2896367798b7" alt="Screenshot" width="250"/>
-<img src="https://github.com/user-attachments/assets/59d40870-009f-44ea-bab0-7834e4884980" alt="Screenshot" width="250"/>
-<img src="https://github.com/user-attachments/assets/129bb4b0-5e08-4cf6-9694-c60d43ebbbda" alt="Screenshot" width="250"/>
-<img src="https://github.com/user-attachments/assets/07b8aa44-7b44-49c8-aabc-5e7de45fb80a" alt="Screenshot" width="250"/>
-<img src="https://github.com/user-attachments/assets/ecf03490-2a59-4e1c-a737-cd3332e3cc62" alt="Screenshot" width="250"/>
-<img src="https://github.com/user-attachments/assets/6241d17f-092c-4c34-a148-e027bb670cf8" alt="Screenshot" width="250"/>
-<img src="https://github.com/user-attachments/assets/fc05af0c-99e0-4abb-98ef-fa3892eebe7f" alt="Screenshot" width="250"/>
-<img src="https://github.com/user-attachments/assets/7ceb9a1c-1949-4c34-8abc-1128daa1bf2d" alt="Screenshot" width="250"/>
-<img src="https://github.com/user-attachments/assets/f860ac18-1e42-41b2-b75b-db73c417b10e" alt="Screenshot" width="250"/>
-<img src="https://github.com/user-attachments/assets/178a7218-4666-4b2b-ab87-e20b9d730606" alt="Screenshot" width="250"/>
-<img src="https://github.com/user-attachments/assets/a21c170a-1dc9-4d8c-a1fa-93e53e2357e3" alt="Screenshot" width="250"/>
-<img src="https://github.com/user-attachments/assets/beedfe5e-fcb3-4726-9fec-64d7bc0c799f" alt="Screenshot" width="250"/>
+<img src="https://github.com/user-attachments/assets/84d355f4-19d0-4dfb-b143-d32e598fee43" alt="Screenshot" width="250"/>
+<img src="https://github.com/user-attachments/assets/fee9d0d3-528a-4bf3-ad61-3f73fdf3f5da" alt="Screenshot" width="250"/>
+<img src="https://github.com/user-attachments/assets/6343808b-f37f-4355-a605-2ba3f86d14b6" alt="Screenshot" width="250"/>
+<img src="https://github.com/user-attachments/assets/97db7a6f-2f18-4cd7-8049-64a166f7cdfc" alt="Screenshot" width="250"/>
+<img src="https://github.com/user-attachments/assets/04ecd2a6-cf87-459f-8b0c-9700e07f8257" alt="Screenshot" width="250"/>
+<img src="https://github.com/user-attachments/assets/094d8b4d-e2ce-4617-accb-01b09f7c032b" alt="Screenshot" width="250"/>
+<img src="https://github.com/user-attachments/assets/fd84e432-c524-4dac-afda-dcab57fc8047" alt="Screenshot" width="250"/>
+<img src="https://github.com/user-attachments/assets/4c826f3e-d4fd-425c-8779-48bdcfa4e952" alt="Screenshot" width="250"/>
+<img src="https://github.com/user-attachments/assets/4a4c2a41-f7bc-4e34-b6fb-b728f595b0e8" alt="Screenshot" width="250"/>
+<img src="https://github.com/user-attachments/assets/d3a748b8-503c-430d-b967-6096f74efd1b" alt="Screenshot" width="250"/>
+<img src="https://github.com/user-attachments/assets/3c8f907f-1e64-4538-a814-5b137006b9cc" alt="Screenshot" width="250"/>
+<img src="https://github.com/user-attachments/assets/3195cff5-ea7e-47b3-9860-823749c76317" alt="Screenshot" width="250"/>
+<img src="https://github.com/user-attachments/assets/ab7daee8-6bc5-491f-a301-479673a1da38" alt="Screenshot" width="250"/>
+<img src="https://github.com/user-attachments/assets/e7ec61b2-6ab0-4a80-b9b0-cd43132ca2ac" alt="Screenshot" width="250"/>
+<img src="https://github.com/user-attachments/assets/3c849c5d-39c3-4ade-96ea-1964002c7d68" alt="Screenshot" width="250"/>
+<img src="https://github.com/user-attachments/assets/2d986d2c-d300-4b5f-b989-5f8682f2e223" alt="Screenshot" width="250"/>
+<img src="https://github.com/user-attachments/assets/66f52ea0-8d73-4457-a1c3-d815cf7b2878" alt="Screenshot" width="250"/>
 <img src="https://github.com/user-attachments/assets/b42b7109-4fbc-41ea-9657-481f7489e5d4" alt="Screenshot" width="250"/>
 
 
